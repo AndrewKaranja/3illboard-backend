@@ -1,0 +1,30 @@
+import * as React from "react";
+import { List, Datagrid, ListProps, TextField, DateField } from "react-admin";
+import Pagination from "../Components/Pagination";
+
+export const SpaceList = (props: ListProps): React.ReactElement => {
+  return (
+    <List
+      {...props}
+      bulkActionButtons={false}
+      title={"Spaces"}
+      perPage={50}
+      pagination={<Pagination />}
+    >
+      <Datagrid rowClick="show">
+        <TextField label="availability" source="availability" />
+        <DateField source="createdAt" label="Created At" />
+        <TextField label="description" source="description" />
+        <TextField label="dimensions" source="dimensions" />
+        <TextField label="ID" source="id" />
+        <TextField label="location" source="location" />
+        <TextField label="ownerID" source="ownerId" />
+        <TextField label="photos" source="photos" />
+        <TextField label="price" source="price" />
+        <TextField label="spaceID" source="spaceId" />
+        <TextField label="spaceType" source="spaceType" />
+        <DateField source="updatedAt" label="Updated At" />
+      </Datagrid>
+    </List>
+  );
+};

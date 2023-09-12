@@ -1,0 +1,103 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  createdAt DateTime @default(now())
+  firstName String?
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  lastLogin DateTime
+  lastName  String?
+  password  String
+  roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+}
+
+model Space {
+  availability String?
+  createdAt    DateTime @default(now())
+  description  String?
+  dimensions   String
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  location     String?
+  ownerId      String?
+  photos       String?
+  price        Float?
+  spaceId      String   @unique
+  spaceType    String?
+  updatedAt    DateTime @updatedAt
+}
+
+model Advertisment {
+  adId         String?
+  advertiserId String?
+  content      String?
+  createdAt    DateTime @default(now())
+  duration     String?
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  spaceId      String?
+  updatedAt    DateTime @updatedAt
+}
+
+model Booking {
+  adId         String?
+  advertiserId String?
+  bookingId    String?
+  createdAt    DateTime  @default(now())
+  endDate      DateTime?
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  spaceId      String?
+  startDate    DateTime?
+  totalPrice   Float?
+  updatedAt    DateTime  @updatedAt
+}
+
+model Transaction {
+  advertiserId    String?
+  amount          String?
+  bookingId       String?
+  createdAt       DateTime               @default(now())
+  id              String                 @id @default(auto()) @map("_id") @db.ObjectId
+  status          EnumTransactionStatus?
+  transactionDate DateTime?
+  transactionId   String?
+  updatedAt       DateTime               @updatedAt
+}
+
+model Rating {
+  advertiserId String?
+  comment      String?
+  createdAt    DateTime @default(now())
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  rating       Rating?  @relation(name: "RatingOnRatings", fields: [ratingId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  ratingId     String?  @db.ObjectId
+  ratings      Rating[] @relation(name: "RatingOnRatings")
+  reviewId     String?
+  spaceId      String?
+  updatedAt    DateTime @updatedAt
+}
+
+model Notification {
+  content        String?
+  createdAt      DateTime                @default(now())
+  date           DateTime?
+  id             String                  @id @default(auto()) @map("_id") @db.ObjectId
+  notificationId String?
+  status         EnumNotificationStatus?
+  updatedAt      DateTime                @updatedAt
+  userId         String?
+}
+
+enum EnumTransactionStatus {
+  Option1
+}
+
+enum EnumNotificationStatus {
+  Option1
+}
