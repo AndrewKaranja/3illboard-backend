@@ -1,6 +1,6 @@
-import { RatingWhereUniqueInput } from "./RatingWhereUniqueInput";
+import { RatingWhereUniqueInput } from "../rating/RatingWhereUniqueInput";
 
-export type RatingUpdateManyWithoutRatingsInput = {
+export type RatingUpdateManyWithoutUsersInput = {
   connect?: Array<RatingWhereUniqueInput>;
   disconnect?: Array<RatingWhereUniqueInput>;
   set?: Array<RatingWhereUniqueInput>;

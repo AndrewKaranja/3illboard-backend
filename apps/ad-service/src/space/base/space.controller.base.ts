@@ -27,6 +27,15 @@ import { SpaceWhereUniqueInput } from "./SpaceWhereUniqueInput";
 import { SpaceFindManyArgs } from "./SpaceFindManyArgs";
 import { SpaceUpdateInput } from "./SpaceUpdateInput";
 import { Space } from "./Space";
+import { AdvertismentFindManyArgs } from "../../advertisment/base/AdvertismentFindManyArgs";
+import { Advertisment } from "../../advertisment/base/Advertisment";
+import { AdvertismentWhereUniqueInput } from "../../advertisment/base/AdvertismentWhereUniqueInput";
+import { BookingFindManyArgs } from "../../booking/base/BookingFindManyArgs";
+import { Booking } from "../../booking/base/Booking";
+import { BookingWhereUniqueInput } from "../../booking/base/BookingWhereUniqueInput";
+import { RatingFindManyArgs } from "../../rating/base/RatingFindManyArgs";
+import { Rating } from "../../rating/base/Rating";
+import { RatingWhereUniqueInput } from "../../rating/base/RatingWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -48,7 +57,15 @@ export class SpaceControllerBase {
   })
   async create(@common.Body() data: SpaceCreateInput): Promise<Space> {
     return await this.service.create({
-      data: data,
+      data: {
+        ...data,
+
+        user: data.user
+          ? {
+              connect: data.user,
+            }
+          : undefined,
+      },
       select: {
         availability: true,
         createdAt: true,
@@ -62,6 +79,12 @@ export class SpaceControllerBase {
         spaceId: true,
         spaceType: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -95,6 +118,12 @@ export class SpaceControllerBase {
         spaceId: true,
         spaceType: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -129,6 +158,12 @@ export class SpaceControllerBase {
         spaceId: true,
         spaceType: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -158,7 +193,15 @@ export class SpaceControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          user: data.user
+            ? {
+                connect: data.user,
+              }
+            : undefined,
+        },
         select: {
           availability: true,
           createdAt: true,
@@ -172,6 +215,12 @@ export class SpaceControllerBase {
           spaceId: true,
           spaceType: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -214,6 +263,12 @@ export class SpaceControllerBase {
           spaceId: true,
           spaceType: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -224,5 +279,346 @@ export class SpaceControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/advertisments")
+  @ApiNestedQuery(AdvertismentFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Advertisment",
+    action: "read",
+    possession: "any",
+  })
+  async findManyAdvertisments(
+    @common.Req() request: Request,
+    @common.Param() params: SpaceWhereUniqueInput
+  ): Promise<Advertisment[]> {
+    const query = plainToClass(AdvertismentFindManyArgs, request.query);
+    const results = await this.service.findAdvertisments(params.id, {
+      ...query,
+      select: {
+        adId: true,
+        advertiserId: true,
+        content: true,
+        createdAt: true,
+        duration: true,
+        id: true,
+
+        space: {
+          select: {
+            id: true,
+          },
+        },
+
+        spaceId: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/advertisments")
+  @nestAccessControl.UseRoles({
+    resource: "Space",
+    action: "update",
+    possession: "any",
+  })
+  async connectAdvertisments(
+    @common.Param() params: SpaceWhereUniqueInput,
+    @common.Body() body: AdvertismentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      advertisments: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/advertisments")
+  @nestAccessControl.UseRoles({
+    resource: "Space",
+    action: "update",
+    possession: "any",
+  })
+  async updateAdvertisments(
+    @common.Param() params: SpaceWhereUniqueInput,
+    @common.Body() body: AdvertismentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      advertisments: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/advertisments")
+  @nestAccessControl.UseRoles({
+    resource: "Space",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectAdvertisments(
+    @common.Param() params: SpaceWhereUniqueInput,
+    @common.Body() body: AdvertismentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      advertisments: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/bookings")
+  @ApiNestedQuery(BookingFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Booking",
+    action: "read",
+    possession: "any",
+  })
+  async findManyBookings(
+    @common.Req() request: Request,
+    @common.Param() params: SpaceWhereUniqueInput
+  ): Promise<Booking[]> {
+    const query = plainToClass(BookingFindManyArgs, request.query);
+    const results = await this.service.findBookings(params.id, {
+      ...query,
+      select: {
+        adId: true,
+        advertiserId: true,
+        bookingId: true,
+        createdAt: true,
+        endDate: true,
+        id: true,
+
+        space: {
+          select: {
+            id: true,
+          },
+        },
+
+        spaceId: true,
+        startDate: true,
+        totalPrice: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/bookings")
+  @nestAccessControl.UseRoles({
+    resource: "Space",
+    action: "update",
+    possession: "any",
+  })
+  async connectBookings(
+    @common.Param() params: SpaceWhereUniqueInput,
+    @common.Body() body: BookingWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      bookings: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/bookings")
+  @nestAccessControl.UseRoles({
+    resource: "Space",
+    action: "update",
+    possession: "any",
+  })
+  async updateBookings(
+    @common.Param() params: SpaceWhereUniqueInput,
+    @common.Body() body: BookingWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      bookings: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/bookings")
+  @nestAccessControl.UseRoles({
+    resource: "Space",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectBookings(
+    @common.Param() params: SpaceWhereUniqueInput,
+    @common.Body() body: BookingWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      bookings: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/ratings")
+  @ApiNestedQuery(RatingFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Rating",
+    action: "read",
+    possession: "any",
+  })
+  async findManyRatings(
+    @common.Req() request: Request,
+    @common.Param() params: SpaceWhereUniqueInput
+  ): Promise<Rating[]> {
+    const query = plainToClass(RatingFindManyArgs, request.query);
+    const results = await this.service.findRatings(params.id, {
+      ...query,
+      select: {
+        advertiserId: true,
+        comment: true,
+        createdAt: true,
+        id: true,
+        rating: true,
+        reviewId: true,
+
+        space: {
+          select: {
+            id: true,
+          },
+        },
+
+        spaceId: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/ratings")
+  @nestAccessControl.UseRoles({
+    resource: "Space",
+    action: "update",
+    possession: "any",
+  })
+  async connectRatings(
+    @common.Param() params: SpaceWhereUniqueInput,
+    @common.Body() body: RatingWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      ratings: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/ratings")
+  @nestAccessControl.UseRoles({
+    resource: "Space",
+    action: "update",
+    possession: "any",
+  })
+  async updateRatings(
+    @common.Param() params: SpaceWhereUniqueInput,
+    @common.Body() body: RatingWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      ratings: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/ratings")
+  @nestAccessControl.UseRoles({
+    resource: "Space",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectRatings(
+    @common.Param() params: SpaceWhereUniqueInput,
+    @common.Body() body: RatingWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      ratings: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

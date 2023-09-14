@@ -11,7 +11,10 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
+import { IsString, IsOptional, ValidateNested } from "class-validator";
+import { SpaceWhereUniqueInput } from "../../space/base/SpaceWhereUniqueInput";
+import { Type } from "class-transformer";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class AdvertismentCreateInput {
@@ -61,6 +64,18 @@ class AdvertismentCreateInput {
 
   @ApiProperty({
     required: false,
+    type: () => SpaceWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => SpaceWhereUniqueInput)
+  @IsOptional()
+  @Field(() => SpaceWhereUniqueInput, {
+    nullable: true,
+  })
+  space?: SpaceWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -69,6 +84,18 @@ class AdvertismentCreateInput {
     nullable: true,
   })
   spaceId?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput | null;
 }
 
 export { AdvertismentCreateInput as AdvertismentCreateInput };

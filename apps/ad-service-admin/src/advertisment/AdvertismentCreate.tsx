@@ -1,5 +1,14 @@
 import * as React from "react";
-import { Create, SimpleForm, CreateProps, TextInput } from "react-admin";
+import {
+  Create,
+  SimpleForm,
+  CreateProps,
+  TextInput,
+  ReferenceInput,
+  SelectInput,
+} from "react-admin";
+import { SpaceTitle } from "../space/SpaceTitle";
+import { UserTitle } from "../user/UserTitle";
 
 export const AdvertismentCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -9,7 +18,13 @@ export const AdvertismentCreate = (props: CreateProps): React.ReactElement => {
         <TextInput label="advertiserID" source="advertiserId" />
         <TextInput label="content" source="content" />
         <TextInput label="duration" source="duration" />
+        <ReferenceInput source="space.id" reference="Space" label="Space">
+          <SelectInput optionText={SpaceTitle} />
+        </ReferenceInput>
         <TextInput label="spaceID" source="spaceId" />
+        <ReferenceInput source="user.id" reference="User" label="User">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
       </SimpleForm>
     </Create>
   );

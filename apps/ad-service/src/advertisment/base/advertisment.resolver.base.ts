@@ -26,6 +26,8 @@ import { AdvertismentCountArgs } from "./AdvertismentCountArgs";
 import { AdvertismentFindManyArgs } from "./AdvertismentFindManyArgs";
 import { AdvertismentFindUniqueArgs } from "./AdvertismentFindUniqueArgs";
 import { Advertisment } from "./Advertisment";
+import { Space } from "../../space/base/Space";
+import { User } from "../../user/base/User";
 import { AdvertismentService } from "../advertisment.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Advertisment)
@@ -92,7 +94,21 @@ export class AdvertismentResolverBase {
   ): Promise<Advertisment> {
     return await this.service.create({
       ...args,
-      data: args.data,
+      data: {
+        ...args.data,
+
+        space: args.data.space
+          ? {
+              connect: args.data.space,
+            }
+          : undefined,
+
+        user: args.data.user
+          ? {
+              connect: args.data.user,
+            }
+          : undefined,
+      },
     });
   }
 
@@ -109,7 +125,21 @@ export class AdvertismentResolverBase {
     try {
       return await this.service.update({
         ...args,
-        data: args.data,
+        data: {
+          ...args.data,
+
+          space: args.data.space
+            ? {
+                connect: args.data.space,
+              }
+            : undefined,
+
+          user: args.data.user
+            ? {
+                connect: args.data.user,
+              }
+            : undefined,
+        },
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -140,5 +170,47 @@ export class AdvertismentResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => Space, {
+    nullable: true,
+    name: "space",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "Space",
+    action: "read",
+    possession: "any",
+  })
+  async resolveFieldSpace(
+    @graphql.Parent() parent: Advertisment
+  ): Promise<Space | null> {
+    const result = await this.service.getSpace(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => User, {
+    nullable: true,
+    name: "user",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async resolveFieldUser(
+    @graphql.Parent() parent: Advertisment
+  ): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 }

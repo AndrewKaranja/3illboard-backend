@@ -10,7 +10,14 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-import { Prisma, Space } from "@prisma/client";
+import {
+  Prisma,
+  Space,
+  Advertisment,
+  Booking,
+  Rating,
+  User,
+} from "@prisma/client";
 
 export class SpaceServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -45,5 +52,46 @@ export class SpaceServiceBase {
     args: Prisma.SelectSubset<T, Prisma.SpaceDeleteArgs>
   ): Promise<Space> {
     return this.prisma.space.delete(args);
+  }
+
+  async findAdvertisments(
+    parentId: string,
+    args: Prisma.AdvertismentFindManyArgs
+  ): Promise<Advertisment[]> {
+    return this.prisma.space
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .advertisments(args);
+  }
+
+  async findBookings(
+    parentId: string,
+    args: Prisma.BookingFindManyArgs
+  ): Promise<Booking[]> {
+    return this.prisma.space
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .bookings(args);
+  }
+
+  async findRatings(
+    parentId: string,
+    args: Prisma.RatingFindManyArgs
+  ): Promise<Rating[]> {
+    return this.prisma.space
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .ratings(args);
+  }
+
+  async getUser(parentId: string): Promise<User | null> {
+    return this.prisma.space
+      .findUnique({
+        where: { id: parentId },
+      })
+      .user();
   }
 }

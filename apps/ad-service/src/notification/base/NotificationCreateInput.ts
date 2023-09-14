@@ -11,9 +11,16 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate, IsEnum } from "class-validator";
+import {
+  IsString,
+  IsOptional,
+  IsDate,
+  IsEnum,
+  ValidateNested,
+} from "class-validator";
 import { Type } from "class-transformer";
 import { EnumNotificationStatus } from "./EnumNotificationStatus";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class NotificationCreateInput {
@@ -41,17 +48,6 @@ class NotificationCreateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  notificationId?: string | null;
-
-  @ApiProperty({
-    required: false,
     enum: EnumNotificationStatus,
   })
   @IsEnum(EnumNotificationStatus)
@@ -60,6 +56,18 @@ class NotificationCreateInput {
     nullable: true,
   })
   status?: "Option1" | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

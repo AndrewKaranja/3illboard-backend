@@ -11,9 +11,17 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsEnum, IsDate } from "class-validator";
-import { EnumTransactionStatus } from "./EnumTransactionStatus";
+import {
+  IsString,
+  IsOptional,
+  ValidateNested,
+  IsEnum,
+  IsDate,
+} from "class-validator";
+import { BookingWhereUniqueInput } from "../../booking/base/BookingWhereUniqueInput";
 import { Type } from "class-transformer";
+import { EnumTransactionStatus } from "./EnumTransactionStatus";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class TransactionUpdateInput {
@@ -38,6 +46,18 @@ class TransactionUpdateInput {
     nullable: true,
   })
   amount?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => BookingWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => BookingWhereUniqueInput)
+  @IsOptional()
+  @Field(() => BookingWhereUniqueInput, {
+    nullable: true,
+  })
+  booking?: BookingWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -82,6 +102,18 @@ class TransactionUpdateInput {
     nullable: true,
   })
   transactionId?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput | null;
 }
 
 export { TransactionUpdateInput as TransactionUpdateInput };

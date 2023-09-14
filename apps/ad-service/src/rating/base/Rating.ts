@@ -9,10 +9,19 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { ObjectType, Field } from "@nestjs/graphql";
+import { ObjectType, Field, Float } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate, ValidateNested } from "class-validator";
+import {
+  IsString,
+  IsOptional,
+  IsDate,
+  IsNumber,
+  ValidateNested,
+} from "class-validator";
 import { Type } from "class-transformer";
+import { Decimal } from "decimal.js";
+import { Space } from "../../space/base/Space";
+import { User } from "../../user/base/User";
 
 @ObjectType()
 class Rating {
@@ -56,21 +65,14 @@ class Rating {
 
   @ApiProperty({
     required: false,
-    type: () => Rating,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => Rating)
+  @IsNumber()
   @IsOptional()
-  rating?: Rating | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Rating],
+  @Field(() => Float, {
+    nullable: true,
   })
-  @ValidateNested()
-  @Type(() => Rating)
-  @IsOptional()
-  ratings?: Array<Rating>;
+  rating!: Decimal | null;
 
   @ApiProperty({
     required: false,
@@ -82,6 +84,15 @@ class Rating {
     nullable: true,
   })
   reviewId!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Space,
+  })
+  @ValidateNested()
+  @Type(() => Space)
+  @IsOptional()
+  space?: Space | null;
 
   @ApiProperty({
     required: false,
@@ -101,6 +112,15 @@ class Rating {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  user?: User | null;
 }
 
 export { Rating as Rating };

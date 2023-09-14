@@ -13,10 +13,13 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional } from "class-validator";
+import { IsOptional, ValidateNested } from "class-validator";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { SpaceWhereUniqueInput } from "../../space/base/SpaceWhereUniqueInput";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
+import { TransactionListRelationFilter } from "../../transaction/base/TransactionListRelationFilter";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class BookingWhereInput {
@@ -77,6 +80,18 @@ class BookingWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => SpaceWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => SpaceWhereUniqueInput)
+  @IsOptional()
+  @Field(() => SpaceWhereUniqueInput, {
+    nullable: true,
+  })
+  space?: SpaceWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)
@@ -107,6 +122,30 @@ class BookingWhereInput {
     nullable: true,
   })
   totalPrice?: FloatNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => TransactionListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => TransactionListRelationFilter)
+  @IsOptional()
+  @Field(() => TransactionListRelationFilter, {
+    nullable: true,
+  })
+  transactions?: TransactionListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput;
 }
 
 export { BookingWhereInput as BookingWhereInput };

@@ -11,14 +11,38 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, IsOptional } from "class-validator";
+import { Advertisment } from "../../advertisment/base/Advertisment";
+import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { Booking } from "../../booking/base/Booking";
+import { Notification } from "../../notification/base/Notification";
+import { Rating } from "../../rating/base/Rating";
 import { IsJSONValue } from "@app/custom-validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
+import { Space } from "../../space/base/Space";
+import { Transaction } from "../../transaction/base/Transaction";
 
 @ObjectType()
 class User {
+  @ApiProperty({
+    required: false,
+    type: () => [Advertisment],
+  })
+  @ValidateNested()
+  @Type(() => Advertisment)
+  @IsOptional()
+  advertisments?: Array<Advertisment>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Booking],
+  })
+  @ValidateNested()
+  @Type(() => Booking)
+  @IsOptional()
+  bookings?: Array<Booking>;
+
   @ApiProperty({
     required: true,
   })
@@ -26,6 +50,14 @@ class User {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  email!: string;
 
   @ApiProperty({
     required: false,
@@ -66,11 +98,47 @@ class User {
   lastName!: string | null;
 
   @ApiProperty({
+    required: false,
+    type: () => [Notification],
+  })
+  @ValidateNested()
+  @Type(() => Notification)
+  @IsOptional()
+  notifications?: Array<Notification>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Rating],
+  })
+  @ValidateNested()
+  @Type(() => Rating)
+  @IsOptional()
+  ratings?: Array<Rating>;
+
+  @ApiProperty({
     required: true,
   })
   @IsJSONValue()
   @Field(() => GraphQLJSON)
   roles!: JsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Space],
+  })
+  @ValidateNested()
+  @Type(() => Space)
+  @IsOptional()
+  spaces?: Array<Space>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Transaction],
+  })
+  @ValidateNested()
+  @Type(() => Transaction)
+  @IsOptional()
+  transactions?: Array<Transaction>;
 
   @ApiProperty({
     required: true,

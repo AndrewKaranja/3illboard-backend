@@ -10,37 +10,37 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { InputType, Field } from "@nestjs/graphql";
-import { RatingWhereUniqueInput } from "./RatingWhereUniqueInput";
+import { SpaceWhereUniqueInput } from "../../space/base/SpaceWhereUniqueInput";
 import { ApiProperty } from "@nestjs/swagger";
 
 @InputType()
-class RatingUpdateManyWithoutRatingsInput {
-  @Field(() => [RatingWhereUniqueInput], {
+class SpaceUpdateManyWithoutUsersInput {
+  @Field(() => [SpaceWhereUniqueInput], {
     nullable: true,
   })
   @ApiProperty({
     required: false,
-    type: () => [RatingWhereUniqueInput],
+    type: () => [SpaceWhereUniqueInput],
   })
-  connect?: Array<RatingWhereUniqueInput>;
+  connect?: Array<SpaceWhereUniqueInput>;
 
-  @Field(() => [RatingWhereUniqueInput], {
+  @Field(() => [SpaceWhereUniqueInput], {
     nullable: true,
   })
   @ApiProperty({
     required: false,
-    type: () => [RatingWhereUniqueInput],
+    type: () => [SpaceWhereUniqueInput],
   })
-  disconnect?: Array<RatingWhereUniqueInput>;
+  disconnect?: Array<SpaceWhereUniqueInput>;
 
-  @Field(() => [RatingWhereUniqueInput], {
+  @Field(() => [SpaceWhereUniqueInput], {
     nullable: true,
   })
   @ApiProperty({
     required: false,
-    type: () => [RatingWhereUniqueInput],
+    type: () => [SpaceWhereUniqueInput],
   })
-  set?: Array<RatingWhereUniqueInput>;
+  set?: Array<SpaceWhereUniqueInput>;
 }
 
-export { RatingUpdateManyWithoutRatingsInput as RatingUpdateManyWithoutRatingsInput };
+export { SpaceUpdateManyWithoutUsersInput as SpaceUpdateManyWithoutUsersInput };

@@ -50,10 +50,31 @@ export class TransactionControllerBase {
     @common.Body() data: TransactionCreateInput
   ): Promise<Transaction> {
     return await this.service.create({
-      data: data,
+      data: {
+        ...data,
+
+        booking: data.booking
+          ? {
+              connect: data.booking,
+            }
+          : undefined,
+
+        user: data.user
+          ? {
+              connect: data.user,
+            }
+          : undefined,
+      },
       select: {
         advertiserId: true,
         amount: true,
+
+        booking: {
+          select: {
+            id: true,
+          },
+        },
+
         bookingId: true,
         createdAt: true,
         id: true,
@@ -61,6 +82,12 @@ export class TransactionControllerBase {
         transactionDate: true,
         transactionId: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -84,6 +111,13 @@ export class TransactionControllerBase {
       select: {
         advertiserId: true,
         amount: true,
+
+        booking: {
+          select: {
+            id: true,
+          },
+        },
+
         bookingId: true,
         createdAt: true,
         id: true,
@@ -91,6 +125,12 @@ export class TransactionControllerBase {
         transactionDate: true,
         transactionId: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -115,6 +155,13 @@ export class TransactionControllerBase {
       select: {
         advertiserId: true,
         amount: true,
+
+        booking: {
+          select: {
+            id: true,
+          },
+        },
+
         bookingId: true,
         createdAt: true,
         id: true,
@@ -122,6 +169,12 @@ export class TransactionControllerBase {
         transactionDate: true,
         transactionId: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -151,10 +204,31 @@ export class TransactionControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          booking: data.booking
+            ? {
+                connect: data.booking,
+              }
+            : undefined,
+
+          user: data.user
+            ? {
+                connect: data.user,
+              }
+            : undefined,
+        },
         select: {
           advertiserId: true,
           amount: true,
+
+          booking: {
+            select: {
+              id: true,
+            },
+          },
+
           bookingId: true,
           createdAt: true,
           id: true,
@@ -162,6 +236,12 @@ export class TransactionControllerBase {
           transactionDate: true,
           transactionId: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -194,6 +274,13 @@ export class TransactionControllerBase {
         select: {
           advertiserId: true,
           amount: true,
+
+          booking: {
+            select: {
+              id: true,
+            },
+          },
+
           bookingId: true,
           createdAt: true,
           id: true,
@@ -201,6 +288,12 @@ export class TransactionControllerBase {
           transactionDate: true,
           transactionId: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {

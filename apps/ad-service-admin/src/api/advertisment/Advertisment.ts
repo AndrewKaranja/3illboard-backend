@@ -1,3 +1,6 @@
+import { Space } from "../space/Space";
+import { User } from "../user/User";
+
 export type Advertisment = {
   adId: string | null;
   advertiserId: string | null;
@@ -5,6 +8,8 @@ export type Advertisment = {
   createdAt: Date;
   duration: string | null;
   id: string;
+  space?: Space | null;
   spaceId: string | null;
   updatedAt: Date;
+  user?: User | null;
 };

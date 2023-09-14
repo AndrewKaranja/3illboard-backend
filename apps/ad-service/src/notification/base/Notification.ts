@@ -11,9 +11,16 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate, IsEnum } from "class-validator";
+import {
+  IsString,
+  IsOptional,
+  IsDate,
+  IsEnum,
+  ValidateNested,
+} from "class-validator";
 import { Type } from "class-transformer";
 import { EnumNotificationStatus } from "./EnumNotificationStatus";
+import { User } from "../../user/base/User";
 
 @ObjectType()
 class Notification {
@@ -57,17 +64,6 @@ class Notification {
 
   @ApiProperty({
     required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  notificationId!: string | null;
-
-  @ApiProperty({
-    required: false,
     enum: EnumNotificationStatus,
   })
   @IsEnum(EnumNotificationStatus)
@@ -84,6 +80,15 @@ class Notification {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  user?: User | null;
 
   @ApiProperty({
     required: false,

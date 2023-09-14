@@ -1,11 +1,13 @@
-import { RatingWhereUniqueInput } from "./RatingWhereUniqueInput";
-import { RatingUpdateManyWithoutRatingsInput } from "./RatingUpdateManyWithoutRatingsInput";
+import { Decimal } from "decimal.js";
+import { SpaceWhereUniqueInput } from "../space/SpaceWhereUniqueInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type RatingUpdateInput = {
   advertiserId?: string | null;
   comment?: string | null;
-  rating?: RatingWhereUniqueInput | null;
-  ratings?: RatingUpdateManyWithoutRatingsInput;
+  rating?: Decimal | null;
   reviewId?: string | null;
+  space?: SpaceWhereUniqueInput | null;
   spaceId?: string | null;
+  user?: UserWhereUniqueInput | null;
 };

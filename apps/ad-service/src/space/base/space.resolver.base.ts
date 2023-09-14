@@ -26,6 +26,13 @@ import { SpaceCountArgs } from "./SpaceCountArgs";
 import { SpaceFindManyArgs } from "./SpaceFindManyArgs";
 import { SpaceFindUniqueArgs } from "./SpaceFindUniqueArgs";
 import { Space } from "./Space";
+import { AdvertismentFindManyArgs } from "../../advertisment/base/AdvertismentFindManyArgs";
+import { Advertisment } from "../../advertisment/base/Advertisment";
+import { BookingFindManyArgs } from "../../booking/base/BookingFindManyArgs";
+import { Booking } from "../../booking/base/Booking";
+import { RatingFindManyArgs } from "../../rating/base/RatingFindManyArgs";
+import { Rating } from "../../rating/base/Rating";
+import { User } from "../../user/base/User";
 import { SpaceService } from "../space.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Space)
@@ -88,7 +95,15 @@ export class SpaceResolverBase {
   async createSpace(@graphql.Args() args: CreateSpaceArgs): Promise<Space> {
     return await this.service.create({
       ...args,
-      data: args.data,
+      data: {
+        ...args.data,
+
+        user: args.data.user
+          ? {
+              connect: args.data.user,
+            }
+          : undefined,
+      },
     });
   }
 
@@ -105,7 +120,15 @@ export class SpaceResolverBase {
     try {
       return await this.service.update({
         ...args,
-        data: args.data,
+        data: {
+          ...args.data,
+
+          user: args.data.user
+            ? {
+                connect: args.data.user,
+              }
+            : undefined,
+        },
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -136,5 +159,86 @@ export class SpaceResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Advertisment], { name: "advertisments" })
+  @nestAccessControl.UseRoles({
+    resource: "Advertisment",
+    action: "read",
+    possession: "any",
+  })
+  async resolveFieldAdvertisments(
+    @graphql.Parent() parent: Space,
+    @graphql.Args() args: AdvertismentFindManyArgs
+  ): Promise<Advertisment[]> {
+    const results = await this.service.findAdvertisments(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Booking], { name: "bookings" })
+  @nestAccessControl.UseRoles({
+    resource: "Booking",
+    action: "read",
+    possession: "any",
+  })
+  async resolveFieldBookings(
+    @graphql.Parent() parent: Space,
+    @graphql.Args() args: BookingFindManyArgs
+  ): Promise<Booking[]> {
+    const results = await this.service.findBookings(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Rating], { name: "ratings" })
+  @nestAccessControl.UseRoles({
+    resource: "Rating",
+    action: "read",
+    possession: "any",
+  })
+  async resolveFieldRatings(
+    @graphql.Parent() parent: Space,
+    @graphql.Args() args: RatingFindManyArgs
+  ): Promise<Rating[]> {
+    const results = await this.service.findRatings(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => User, {
+    nullable: true,
+    name: "user",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async resolveFieldUser(
+    @graphql.Parent() parent: Space
+  ): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 }

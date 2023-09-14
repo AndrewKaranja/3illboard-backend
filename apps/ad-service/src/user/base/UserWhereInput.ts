@@ -11,13 +11,54 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { AdvertismentListRelationFilter } from "../../advertisment/base/AdvertismentListRelationFilter";
+import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional } from "class-validator";
+import { BookingListRelationFilter } from "../../booking/base/BookingListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { NotificationListRelationFilter } from "../../notification/base/NotificationListRelationFilter";
+import { RatingListRelationFilter } from "../../rating/base/RatingListRelationFilter";
+import { SpaceListRelationFilter } from "../../space/base/SpaceListRelationFilter";
+import { TransactionListRelationFilter } from "../../transaction/base/TransactionListRelationFilter";
 
 @InputType()
 class UserWhereInput {
+  @ApiProperty({
+    required: false,
+    type: () => AdvertismentListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => AdvertismentListRelationFilter)
+  @IsOptional()
+  @Field(() => AdvertismentListRelationFilter, {
+    nullable: true,
+  })
+  advertisments?: AdvertismentListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => BookingListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => BookingListRelationFilter)
+  @IsOptional()
+  @Field(() => BookingListRelationFilter, {
+    nullable: true,
+  })
+  bookings?: BookingListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  email?: StringFilter;
+
   @ApiProperty({
     required: false,
     type: StringNullableFilter,
@@ -50,6 +91,54 @@ class UserWhereInput {
     nullable: true,
   })
   lastName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => NotificationListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => NotificationListRelationFilter)
+  @IsOptional()
+  @Field(() => NotificationListRelationFilter, {
+    nullable: true,
+  })
+  notifications?: NotificationListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => RatingListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => RatingListRelationFilter)
+  @IsOptional()
+  @Field(() => RatingListRelationFilter, {
+    nullable: true,
+  })
+  ratings?: RatingListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => SpaceListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => SpaceListRelationFilter)
+  @IsOptional()
+  @Field(() => SpaceListRelationFilter, {
+    nullable: true,
+  })
+  spaces?: SpaceListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => TransactionListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => TransactionListRelationFilter)
+  @IsOptional()
+  @Field(() => TransactionListRelationFilter, {
+    nullable: true,
+  })
+  transactions?: TransactionListRelationFilter;
 
   @ApiProperty({
     required: false,

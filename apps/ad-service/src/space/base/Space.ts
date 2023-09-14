@@ -11,21 +11,51 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate, IsNumber } from "class-validator";
+import { Advertisment } from "../../advertisment/base/Advertisment";
+import {
+  ValidateNested,
+  IsOptional,
+  IsDate,
+  IsString,
+  IsNumber,
+} from "class-validator";
 import { Type } from "class-transformer";
+import { IsJSONValue } from "@app/custom-validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { JsonValue } from "type-fest";
+import { Booking } from "../../booking/base/Booking";
+import { Rating } from "../../rating/base/Rating";
+import { User } from "../../user/base/User";
 
 @ObjectType()
 class Space {
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => [Advertisment],
   })
-  @IsString()
+  @ValidateNested()
+  @Type(() => Advertisment)
   @IsOptional()
-  @Field(() => String, {
+  advertisments?: Array<Advertisment>;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
     nullable: true,
   })
-  availability!: string | null;
+  availability!: JsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Booking],
+  })
+  @ValidateNested()
+  @Type(() => Booking)
+  @IsOptional()
+  bookings?: Array<Booking>;
 
   @ApiProperty({
     required: true,
@@ -86,14 +116,13 @@ class Space {
 
   @ApiProperty({
     required: false,
-    type: String,
   })
-  @IsString()
+  @IsJSONValue()
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => GraphQLJSON, {
     nullable: true,
   })
-  photos!: string | null;
+  photos!: JsonValue;
 
   @ApiProperty({
     required: false,
@@ -105,6 +134,15 @@ class Space {
     nullable: true,
   })
   price!: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Rating],
+  })
+  @ValidateNested()
+  @Type(() => Rating)
+  @IsOptional()
+  ratings?: Array<Rating>;
 
   @ApiProperty({
     required: true,
@@ -132,6 +170,15 @@ class Space {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  user?: User | null;
 }
 
 export { Space as Space };

@@ -10,19 +10,19 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { InputType, Field } from "@nestjs/graphql";
-import { RatingWhereUniqueInput } from "./RatingWhereUniqueInput";
+import { NotificationWhereUniqueInput } from "../../notification/base/NotificationWhereUniqueInput";
 import { ApiProperty } from "@nestjs/swagger";
 
 @InputType()
-class RatingCreateNestedManyWithoutRatingsInput {
-  @Field(() => [RatingWhereUniqueInput], {
+class NotificationCreateNestedManyWithoutUsersInput {
+  @Field(() => [NotificationWhereUniqueInput], {
     nullable: true,
   })
   @ApiProperty({
     required: false,
-    type: () => [RatingWhereUniqueInput],
+    type: () => [NotificationWhereUniqueInput],
   })
-  connect?: Array<RatingWhereUniqueInput>;
+  connect?: Array<NotificationWhereUniqueInput>;
 }
 
-export { RatingCreateNestedManyWithoutRatingsInput as RatingCreateNestedManyWithoutRatingsInput };
+export { NotificationCreateNestedManyWithoutUsersInput as NotificationCreateNestedManyWithoutUsersInput };

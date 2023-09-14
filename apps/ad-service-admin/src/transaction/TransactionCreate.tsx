@@ -1,12 +1,17 @@
 import * as React from "react";
+
 import {
   Create,
   SimpleForm,
   CreateProps,
   TextInput,
+  ReferenceInput,
   SelectInput,
   DateTimeInput,
 } from "react-admin";
+
+import { BookingTitle } from "../booking/BookingTitle";
+import { UserTitle } from "../user/UserTitle";
 
 export const TransactionCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -14,6 +19,9 @@ export const TransactionCreate = (props: CreateProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="advertiserID" source="advertiserId" />
         <TextInput label="amount" source="amount" />
+        <ReferenceInput source="booking.id" reference="Booking" label="Booking">
+          <SelectInput optionText={BookingTitle} />
+        </ReferenceInput>
         <TextInput label="bookingID" source="bookingId" />
         <SelectInput
           source="status"
@@ -25,6 +33,9 @@ export const TransactionCreate = (props: CreateProps): React.ReactElement => {
         />
         <DateTimeInput label="transactionDate" source="transactionDate" />
         <TextInput label="transactionID" source="transactionId" />
+        <ReferenceInput source="user.id" reference="User" label="User">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
       </SimpleForm>
     </Create>
   );

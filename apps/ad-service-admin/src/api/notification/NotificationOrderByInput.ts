@@ -5,8 +5,8 @@ export type NotificationOrderByInput = {
   createdAt?: SortOrder;
   date?: SortOrder;
   id?: SortOrder;
-  notificationId?: SortOrder;
   status?: SortOrder;
   updatedAt?: SortOrder;
+  userId?: SortOrder;
   userId?: SortOrder;
 };

@@ -11,8 +11,17 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate, IsNumber } from "class-validator";
+import {
+  IsString,
+  IsOptional,
+  IsDate,
+  ValidateNested,
+  IsNumber,
+} from "class-validator";
 import { Type } from "class-transformer";
+import { SpaceWhereUniqueInput } from "../../space/base/SpaceWhereUniqueInput";
+import { TransactionUpdateManyWithoutBookingsInput } from "./TransactionUpdateManyWithoutBookingsInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class BookingUpdateInput {
@@ -62,6 +71,18 @@ class BookingUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => SpaceWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => SpaceWhereUniqueInput)
+  @IsOptional()
+  @Field(() => SpaceWhereUniqueInput, {
+    nullable: true,
+  })
+  space?: SpaceWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -92,6 +113,30 @@ class BookingUpdateInput {
     nullable: true,
   })
   totalPrice?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => TransactionUpdateManyWithoutBookingsInput,
+  })
+  @ValidateNested()
+  @Type(() => TransactionUpdateManyWithoutBookingsInput)
+  @IsOptional()
+  @Field(() => TransactionUpdateManyWithoutBookingsInput, {
+    nullable: true,
+  })
+  transactions?: TransactionUpdateManyWithoutBookingsInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput | null;
 }
 
 export { BookingUpdateInput as BookingUpdateInput };

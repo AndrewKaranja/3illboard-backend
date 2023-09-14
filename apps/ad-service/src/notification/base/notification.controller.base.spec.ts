@@ -23,7 +23,6 @@ const CREATE_INPUT = {
   createdAt: new Date(),
   date: new Date(),
   id: "exampleId",
-  notificationId: "exampleNotificationId",
   updatedAt: new Date(),
   userId: "exampleUserId",
 };
@@ -32,7 +31,6 @@ const CREATE_RESULT = {
   createdAt: new Date(),
   date: new Date(),
   id: "exampleId",
-  notificationId: "exampleNotificationId",
   updatedAt: new Date(),
   userId: "exampleUserId",
 };
@@ -42,7 +40,6 @@ const FIND_MANY_RESULT = [
     createdAt: new Date(),
     date: new Date(),
     id: "exampleId",
-    notificationId: "exampleNotificationId",
     updatedAt: new Date(),
     userId: "exampleUserId",
   },
@@ -52,7 +49,6 @@ const FIND_ONE_RESULT = {
   createdAt: new Date(),
   date: new Date(),
   id: "exampleId",
-  notificationId: "exampleNotificationId",
   updatedAt: new Date(),
   userId: "exampleUserId",
 };

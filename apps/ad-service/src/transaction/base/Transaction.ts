@@ -11,9 +11,17 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate, IsEnum } from "class-validator";
+import {
+  IsString,
+  IsOptional,
+  ValidateNested,
+  IsDate,
+  IsEnum,
+} from "class-validator";
+import { Booking } from "../../booking/base/Booking";
 import { Type } from "class-transformer";
 import { EnumTransactionStatus } from "./EnumTransactionStatus";
+import { User } from "../../user/base/User";
 
 @ObjectType()
 class Transaction {
@@ -38,6 +46,15 @@ class Transaction {
     nullable: true,
   })
   amount!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Booking,
+  })
+  @ValidateNested()
+  @Type(() => Booking)
+  @IsOptional()
+  booking?: Booking | null;
 
   @ApiProperty({
     required: false,
@@ -106,6 +123,15 @@ class Transaction {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  user?: User | null;
 }
 
 export { Transaction as Transaction };

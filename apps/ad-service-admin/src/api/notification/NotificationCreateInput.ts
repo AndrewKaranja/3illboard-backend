@@ -1,7 +1,9 @@
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+
 export type NotificationCreateInput = {
   content?: string | null;
   date?: Date | null;
-  notificationId?: string | null;
   status?: "Option1" | null;
+  user?: UserWhereUniqueInput | null;
   userId?: string | null;
 };

@@ -11,8 +11,10 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate } from "class-validator";
+import { IsString, IsOptional, IsDate, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
+import { Space } from "../../space/base/Space";
+import { User } from "../../user/base/User";
 
 @ObjectType()
 class Advertisment {
@@ -78,6 +80,15 @@ class Advertisment {
 
   @ApiProperty({
     required: false,
+    type: () => Space,
+  })
+  @ValidateNested()
+  @Type(() => Space)
+  @IsOptional()
+  space?: Space | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -94,6 +105,15 @@ class Advertisment {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  user?: User | null;
 }
 
 export { Advertisment as Advertisment };

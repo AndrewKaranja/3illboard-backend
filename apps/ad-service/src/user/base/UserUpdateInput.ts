@@ -11,14 +11,55 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate } from "class-validator";
+import { AdvertismentUpdateManyWithoutUsersInput } from "./AdvertismentUpdateManyWithoutUsersInput";
+import { ValidateNested, IsOptional, IsString, IsDate } from "class-validator";
 import { Type } from "class-transformer";
+import { BookingUpdateManyWithoutUsersInput } from "./BookingUpdateManyWithoutUsersInput";
+import { NotificationUpdateManyWithoutUsersInput } from "./NotificationUpdateManyWithoutUsersInput";
+import { RatingUpdateManyWithoutUsersInput } from "./RatingUpdateManyWithoutUsersInput";
 import { IsJSONValue } from "@app/custom-validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { SpaceUpdateManyWithoutUsersInput } from "./SpaceUpdateManyWithoutUsersInput";
+import { TransactionUpdateManyWithoutUsersInput } from "./TransactionUpdateManyWithoutUsersInput";
 
 @InputType()
 class UserUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: () => AdvertismentUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => AdvertismentUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => AdvertismentUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  advertisments?: AdvertismentUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => BookingUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => BookingUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => BookingUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  bookings?: BookingUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  email?: string;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -54,6 +95,18 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => NotificationUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => NotificationUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => NotificationUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  notifications?: NotificationUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -65,6 +118,18 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => RatingUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => RatingUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => RatingUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  ratings?: RatingUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
   })
   @IsJSONValue()
   @IsOptional()
@@ -72,6 +137,30 @@ class UserUpdateInput {
     nullable: true,
   })
   roles?: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: () => SpaceUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => SpaceUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => SpaceUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  spaces?: SpaceUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => TransactionUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => TransactionUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => TransactionUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  transactions?: TransactionUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

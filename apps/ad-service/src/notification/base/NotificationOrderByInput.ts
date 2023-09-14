@@ -72,17 +72,6 @@ class NotificationOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  notificationId?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
   status?: SortOrder;
 
   @ApiProperty({
@@ -95,6 +84,17 @@ class NotificationOrderByInput {
     nullable: true,
   })
   updatedAt?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  userId?: SortOrder;
 
   @ApiProperty({
     required: false,

@@ -10,7 +10,7 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-import { Prisma, Rating } from "@prisma/client";
+import { Prisma, Rating, Space, User } from "@prisma/client";
 
 export class RatingServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -47,22 +47,19 @@ export class RatingServiceBase {
     return this.prisma.rating.delete(args);
   }
 
-  async findRatings(
-    parentId: string,
-    args: Prisma.RatingFindManyArgs
-  ): Promise<Rating[]> {
-    return this.prisma.rating
-      .findUniqueOrThrow({
-        where: { id: parentId },
-      })
-      .ratings(args);
-  }
-
-  async getRating(parentId: string): Promise<Rating | null> {
+  async getSpace(parentId: string): Promise<Space | null> {
     return this.prisma.rating
       .findUnique({
         where: { id: parentId },
       })
-      .rating();
+      .space();
+  }
+
+  async getUser(parentId: string): Promise<User | null> {
+    return this.prisma.rating
+      .findUnique({
+        where: { id: parentId },
+      })
+      .user();
   }
 }

@@ -11,24 +11,53 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { AdvertismentListRelationFilter } from "../../advertisment/base/AdvertismentListRelationFilter";
+import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional } from "class-validator";
+import { JsonFilter } from "../../util/JsonFilter";
+import { BookingListRelationFilter } from "../../booking/base/BookingListRelationFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
+import { RatingListRelationFilter } from "../../rating/base/RatingListRelationFilter";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class SpaceWhereInput {
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    type: () => AdvertismentListRelationFilter,
   })
-  @Type(() => StringNullableFilter)
+  @ValidateNested()
+  @Type(() => AdvertismentListRelationFilter)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => AdvertismentListRelationFilter, {
     nullable: true,
   })
-  availability?: StringNullableFilter;
+  advertisments?: AdvertismentListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: JsonFilter,
+  })
+  @Type(() => JsonFilter)
+  @IsOptional()
+  @Field(() => JsonFilter, {
+    nullable: true,
+  })
+  availability?: JsonFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => BookingListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => BookingListRelationFilter)
+  @IsOptional()
+  @Field(() => BookingListRelationFilter, {
+    nullable: true,
+  })
+  bookings?: BookingListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -87,14 +116,14 @@ class SpaceWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    type: JsonFilter,
   })
-  @Type(() => StringNullableFilter)
+  @Type(() => JsonFilter)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => JsonFilter, {
     nullable: true,
   })
-  photos?: StringNullableFilter;
+  photos?: JsonFilter;
 
   @ApiProperty({
     required: false,
@@ -109,6 +138,18 @@ class SpaceWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => RatingListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => RatingListRelationFilter)
+  @IsOptional()
+  @Field(() => RatingListRelationFilter, {
+    nullable: true,
+  })
+  ratings?: RatingListRelationFilter;
+
+  @ApiProperty({
+    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)
@@ -117,6 +158,18 @@ class SpaceWhereInput {
     nullable: true,
   })
   spaceType?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput;
 }
 
 export { SpaceWhereInput as SpaceWhereInput };

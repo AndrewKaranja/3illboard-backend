@@ -11,20 +11,56 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsNumber } from "class-validator";
+import { AdvertismentUpdateManyWithoutSpacesInput } from "./AdvertismentUpdateManyWithoutSpacesInput";
+import {
+  ValidateNested,
+  IsOptional,
+  IsString,
+  IsNumber,
+} from "class-validator";
+import { Type } from "class-transformer";
+import { IsJSONValue } from "@app/custom-validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
+import { BookingUpdateManyWithoutSpacesInput } from "./BookingUpdateManyWithoutSpacesInput";
+import { RatingUpdateManyWithoutSpacesInput } from "./RatingUpdateManyWithoutSpacesInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class SpaceUpdateInput {
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => AdvertismentUpdateManyWithoutSpacesInput,
   })
-  @IsString()
+  @ValidateNested()
+  @Type(() => AdvertismentUpdateManyWithoutSpacesInput)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => AdvertismentUpdateManyWithoutSpacesInput, {
     nullable: true,
   })
-  availability?: string | null;
+  advertisments?: AdvertismentUpdateManyWithoutSpacesInput;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  availability?: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: () => BookingUpdateManyWithoutSpacesInput,
+  })
+  @ValidateNested()
+  @Type(() => BookingUpdateManyWithoutSpacesInput)
+  @IsOptional()
+  @Field(() => BookingUpdateManyWithoutSpacesInput, {
+    nullable: true,
+  })
+  bookings?: BookingUpdateManyWithoutSpacesInput;
 
   @ApiProperty({
     required: false,
@@ -72,14 +108,13 @@ class SpaceUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
   })
-  @IsString()
+  @IsJSONValue()
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => GraphQLJSON, {
     nullable: true,
   })
-  photos?: string | null;
+  photos?: InputJsonValue;
 
   @ApiProperty({
     required: false,
@@ -91,6 +126,18 @@ class SpaceUpdateInput {
     nullable: true,
   })
   price?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => RatingUpdateManyWithoutSpacesInput,
+  })
+  @ValidateNested()
+  @Type(() => RatingUpdateManyWithoutSpacesInput)
+  @IsOptional()
+  @Field(() => RatingUpdateManyWithoutSpacesInput, {
+    nullable: true,
+  })
+  ratings?: RatingUpdateManyWithoutSpacesInput;
 
   @ApiProperty({
     required: false,
@@ -113,6 +160,18 @@ class SpaceUpdateInput {
     nullable: true,
   })
   spaceType?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput | null;
 }
 
 export { SpaceUpdateInput as SpaceUpdateInput };

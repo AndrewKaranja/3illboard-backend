@@ -51,9 +51,15 @@ export class RatingControllerBase {
       data: {
         ...data,
 
-        rating: data.rating
+        space: data.space
           ? {
-              connect: data.rating,
+              connect: data.space,
+            }
+          : undefined,
+
+        user: data.user
+          ? {
+              connect: data.user,
             }
           : undefined,
       },
@@ -62,16 +68,23 @@ export class RatingControllerBase {
         comment: true,
         createdAt: true,
         id: true,
+        rating: true,
+        reviewId: true,
 
-        rating: {
+        space: {
           select: {
             id: true,
           },
         },
 
-        reviewId: true,
         spaceId: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -97,16 +110,23 @@ export class RatingControllerBase {
         comment: true,
         createdAt: true,
         id: true,
+        rating: true,
+        reviewId: true,
 
-        rating: {
+        space: {
           select: {
             id: true,
           },
         },
 
-        reviewId: true,
         spaceId: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -133,16 +153,23 @@ export class RatingControllerBase {
         comment: true,
         createdAt: true,
         id: true,
+        rating: true,
+        reviewId: true,
 
-        rating: {
+        space: {
           select: {
             id: true,
           },
         },
 
-        reviewId: true,
         spaceId: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -175,9 +202,15 @@ export class RatingControllerBase {
         data: {
           ...data,
 
-          rating: data.rating
+          space: data.space
             ? {
-                connect: data.rating,
+                connect: data.space,
+              }
+            : undefined,
+
+          user: data.user
+            ? {
+                connect: data.user,
               }
             : undefined,
         },
@@ -186,16 +219,23 @@ export class RatingControllerBase {
           comment: true,
           createdAt: true,
           id: true,
+          rating: true,
+          reviewId: true,
 
-          rating: {
+          space: {
             select: {
               id: true,
             },
           },
 
-          reviewId: true,
           spaceId: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -230,16 +270,23 @@ export class RatingControllerBase {
           comment: true,
           createdAt: true,
           id: true,
+          rating: true,
+          reviewId: true,
 
-          rating: {
+          space: {
             select: {
               id: true,
             },
           },
 
-          reviewId: true,
           spaceId: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -250,111 +297,5 @@ export class RatingControllerBase {
       }
       throw error;
     }
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/ratings")
-  @ApiNestedQuery(RatingFindManyArgs)
-  @nestAccessControl.UseRoles({
-    resource: "Rating",
-    action: "read",
-    possession: "any",
-  })
-  async findManyRatings(
-    @common.Req() request: Request,
-    @common.Param() params: RatingWhereUniqueInput
-  ): Promise<Rating[]> {
-    const query = plainToClass(RatingFindManyArgs, request.query);
-    const results = await this.service.findRatings(params.id, {
-      ...query,
-      select: {
-        advertiserId: true,
-        comment: true,
-        createdAt: true,
-        id: true,
-
-        rating: {
-          select: {
-            id: true,
-          },
-        },
-
-        reviewId: true,
-        spaceId: true,
-        updatedAt: true,
-      },
-    });
-    if (results === null) {
-      throw new errors.NotFoundException(
-        `No resource was found for ${JSON.stringify(params)}`
-      );
-    }
-    return results;
-  }
-
-  @common.Post("/:id/ratings")
-  @nestAccessControl.UseRoles({
-    resource: "Rating",
-    action: "update",
-    possession: "any",
-  })
-  async connectRatings(
-    @common.Param() params: RatingWhereUniqueInput,
-    @common.Body() body: RatingWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      ratings: {
-        connect: body,
-      },
-    };
-    await this.service.update({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @common.Patch("/:id/ratings")
-  @nestAccessControl.UseRoles({
-    resource: "Rating",
-    action: "update",
-    possession: "any",
-  })
-  async updateRatings(
-    @common.Param() params: RatingWhereUniqueInput,
-    @common.Body() body: RatingWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      ratings: {
-        set: body,
-      },
-    };
-    await this.service.update({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @common.Delete("/:id/ratings")
-  @nestAccessControl.UseRoles({
-    resource: "Rating",
-    action: "update",
-    possession: "any",
-  })
-  async disconnectRatings(
-    @common.Param() params: RatingWhereUniqueInput,
-    @common.Body() body: RatingWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      ratings: {
-        disconnect: body,
-      },
-    };
-    await this.service.update({
-      where: params,
-      data,
-      select: { id: true },
-    });
   }
 }

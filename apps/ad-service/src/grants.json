@@ -1,6 +1,6 @@
 [
   {
-    "role": "user",
+    "role": "admin",
     "resource": "User",
     "action": "read:own",
     "attributes": "*"
@@ -8,11 +8,71 @@
   {
     "role": "user",
     "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "user",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
     "resource": "User",
     "action": "update:any",
     "attributes": "*"
@@ -20,7 +80,73 @@
   {
     "role": "user",
     "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
     "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -30,9 +156,69 @@
     "attributes": "*"
   },
   {
+    "role": "guest",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Space",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "Space",
     "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Space",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Space",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Space",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Space",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Space",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -42,7 +228,31 @@
     "attributes": "*"
   },
   {
-    "role": "user",
+    "role": "guest",
+    "resource": "Space",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Space",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Space",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Space",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
     "resource": "Space",
     "action": "update:any",
     "attributes": "*"
@@ -50,7 +260,73 @@
   {
     "role": "user",
     "resource": "Space",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Space",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Space",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Space",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Space",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Space",
     "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Space",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Space",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Space",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Space",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Space",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Space",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -60,9 +336,69 @@
     "attributes": "*"
   },
   {
+    "role": "guest",
+    "resource": "Space",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Space",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Space",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Space",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Advertisment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "Advertisment",
     "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Advertisment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Advertisment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Advertisment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Advertisment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Advertisment",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -72,9 +408,69 @@
     "attributes": "*"
   },
   {
+    "role": "guest",
+    "resource": "Advertisment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Advertisment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Advertisment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Advertisment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Advertisment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "Advertisment",
     "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Advertisment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Advertisment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Advertisment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Advertisment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Advertisment",
+    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -84,9 +480,69 @@
     "attributes": "*"
   },
   {
+    "role": "guest",
+    "resource": "Advertisment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Advertisment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Advertisment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Advertisment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Advertisment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "Advertisment",
     "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Advertisment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Advertisment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Advertisment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Advertisment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Booking",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -96,9 +552,69 @@
     "attributes": "*"
   },
   {
+    "role": "guest",
+    "resource": "Booking",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Booking",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Booking",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Booking",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Booking",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "Booking",
     "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Booking",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Booking",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Booking",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Booking",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Booking",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -108,7 +624,31 @@
     "attributes": "*"
   },
   {
-    "role": "user",
+    "role": "guest",
+    "resource": "Booking",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Booking",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Booking",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Booking",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
     "resource": "Booking",
     "action": "delete:any",
     "attributes": "*"
@@ -116,7 +656,73 @@
   {
     "role": "user",
     "resource": "Booking",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Booking",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Booking",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Booking",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Booking",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Booking",
     "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Booking",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Booking",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Booking",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Booking",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Booking",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Transaction",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -126,9 +732,69 @@
     "attributes": "*"
   },
   {
+    "role": "guest",
+    "resource": "Transaction",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Transaction",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Transaction",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Transaction",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Transaction",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "Transaction",
     "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Transaction",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Transaction",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Transaction",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Transaction",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Transaction",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -138,7 +804,31 @@
     "attributes": "*"
   },
   {
-    "role": "user",
+    "role": "guest",
+    "resource": "Transaction",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Transaction",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Transaction",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Transaction",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
     "resource": "Transaction",
     "action": "delete:any",
     "attributes": "*"
@@ -146,7 +836,73 @@
   {
     "role": "user",
     "resource": "Transaction",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Transaction",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Transaction",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Transaction",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Transaction",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Transaction",
     "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Transaction",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Transaction",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Transaction",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Transaction",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Transaction",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Rating",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -156,9 +912,69 @@
     "attributes": "*"
   },
   {
+    "role": "guest",
+    "resource": "Rating",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Rating",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Rating",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Rating",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Rating",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "Rating",
     "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Rating",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Rating",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Rating",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Rating",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Rating",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -168,9 +984,69 @@
     "attributes": "*"
   },
   {
+    "role": "guest",
+    "resource": "Rating",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Rating",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Rating",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Rating",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Rating",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "Rating",
     "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Rating",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Rating",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Rating",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Rating",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Rating",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -180,7 +1056,31 @@
     "attributes": "*"
   },
   {
-    "role": "user",
+    "role": "guest",
+    "resource": "Rating",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Rating",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Rating",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Rating",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
     "resource": "Notification",
     "action": "read:own",
     "attributes": "*"
@@ -188,7 +1088,73 @@
   {
     "role": "user",
     "resource": "Notification",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Notification",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Notification",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Notification",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Notification",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Notification",
     "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Notification",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Notification",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Notification",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Notification",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Notification",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Notification",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -198,13 +1164,97 @@
     "attributes": "*"
   },
   {
-    "role": "user",
+    "role": "guest",
+    "resource": "Notification",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Notification",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Notification",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Notification",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
     "resource": "Notification",
     "action": "delete:any",
     "attributes": "*"
   },
   {
     "role": "user",
+    "resource": "Notification",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Notification",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Notification",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Notification",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
+    "resource": "Notification",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Notification",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Notification",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Notification",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "advertiser",
+    "resource": "Notification",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "support",
+    "resource": "Notification",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "spaceOwner",
     "resource": "Notification",
     "action": "read:any",
     "attributes": "*"

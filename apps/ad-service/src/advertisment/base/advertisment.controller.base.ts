@@ -50,7 +50,21 @@ export class AdvertismentControllerBase {
     @common.Body() data: AdvertismentCreateInput
   ): Promise<Advertisment> {
     return await this.service.create({
-      data: data,
+      data: {
+        ...data,
+
+        space: data.space
+          ? {
+              connect: data.space,
+            }
+          : undefined,
+
+        user: data.user
+          ? {
+              connect: data.user,
+            }
+          : undefined,
+      },
       select: {
         adId: true,
         advertiserId: true,
@@ -58,8 +72,21 @@ export class AdvertismentControllerBase {
         createdAt: true,
         duration: true,
         id: true,
+
+        space: {
+          select: {
+            id: true,
+          },
+        },
+
         spaceId: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -87,8 +114,21 @@ export class AdvertismentControllerBase {
         createdAt: true,
         duration: true,
         id: true,
+
+        space: {
+          select: {
+            id: true,
+          },
+        },
+
         spaceId: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -117,8 +157,21 @@ export class AdvertismentControllerBase {
         createdAt: true,
         duration: true,
         id: true,
+
+        space: {
+          select: {
+            id: true,
+          },
+        },
+
         spaceId: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -148,7 +201,21 @@ export class AdvertismentControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          space: data.space
+            ? {
+                connect: data.space,
+              }
+            : undefined,
+
+          user: data.user
+            ? {
+                connect: data.user,
+              }
+            : undefined,
+        },
         select: {
           adId: true,
           advertiserId: true,
@@ -156,8 +223,21 @@ export class AdvertismentControllerBase {
           createdAt: true,
           duration: true,
           id: true,
+
+          space: {
+            select: {
+              id: true,
+            },
+          },
+
           spaceId: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -194,8 +274,21 @@ export class AdvertismentControllerBase {
           createdAt: true,
           duration: true,
           id: true,
+
+          space: {
+            select: {
+              id: true,
+            },
+          },
+
           spaceId: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {

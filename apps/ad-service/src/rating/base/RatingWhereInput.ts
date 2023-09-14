@@ -15,8 +15,9 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
-import { RatingWhereUniqueInput } from "./RatingWhereUniqueInput";
-import { RatingListRelationFilter } from "./RatingListRelationFilter";
+import { DecimalNullableFilter } from "../../util/DecimalNullableFilter";
+import { SpaceWhereUniqueInput } from "../../space/base/SpaceWhereUniqueInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class RatingWhereInput {
@@ -55,27 +56,14 @@ class RatingWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => RatingWhereUniqueInput,
+    type: DecimalNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => RatingWhereUniqueInput)
+  @Type(() => DecimalNullableFilter)
   @IsOptional()
-  @Field(() => RatingWhereUniqueInput, {
+  @Field(() => DecimalNullableFilter, {
     nullable: true,
   })
-  rating?: RatingWhereUniqueInput;
-
-  @ApiProperty({
-    required: false,
-    type: () => RatingListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => RatingListRelationFilter)
-  @IsOptional()
-  @Field(() => RatingListRelationFilter, {
-    nullable: true,
-  })
-  ratings?: RatingListRelationFilter;
+  rating?: DecimalNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -90,6 +78,18 @@ class RatingWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => SpaceWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => SpaceWhereUniqueInput)
+  @IsOptional()
+  @Field(() => SpaceWhereUniqueInput, {
+    nullable: true,
+  })
+  space?: SpaceWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)
@@ -98,6 +98,18 @@ class RatingWhereInput {
     nullable: true,
   })
   spaceId?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput;
 }
 
 export { RatingWhereInput as RatingWhereInput };

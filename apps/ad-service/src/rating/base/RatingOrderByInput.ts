@@ -72,7 +72,7 @@ class RatingOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  ratingId?: SortOrder;
+  rating?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -105,7 +105,29 @@ class RatingOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  spaceId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   updatedAt?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  userId?: SortOrder;
 }
 
 export { RatingOrderByInput as RatingOrderByInput };

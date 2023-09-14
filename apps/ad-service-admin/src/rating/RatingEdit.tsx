@@ -5,13 +5,13 @@ import {
   SimpleForm,
   EditProps,
   TextInput,
+  NumberInput,
   ReferenceInput,
   SelectInput,
-  ReferenceArrayInput,
-  SelectArrayInput,
 } from "react-admin";
 
-import { RatingTitle } from "./RatingTitle";
+import { SpaceTitle } from "../space/SpaceTitle";
+import { UserTitle } from "../user/UserTitle";
 
 export const RatingEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -19,19 +19,15 @@ export const RatingEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="advertiserID" source="advertiserId" />
         <TextInput label="comment" source="comment" />
-        <ReferenceInput source="rating.id" reference="Rating" label="rating">
-          <SelectInput optionText={RatingTitle} />
-        </ReferenceInput>
-        <ReferenceArrayInput
-          source="ratings"
-          reference="Rating"
-          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
-          format={(value: any) => value && value.map((v: any) => v.id)}
-        >
-          <SelectArrayInput optionText={RatingTitle} />
-        </ReferenceArrayInput>
+        <NumberInput label="rating" source="rating" />
         <TextInput label="reviewID" source="reviewId" />
+        <ReferenceInput source="space.id" reference="Space" label="Space">
+          <SelectInput optionText={SpaceTitle} />
+        </ReferenceInput>
         <TextInput label="spaceID" source="spaceId" />
+        <ReferenceInput source="user.id" reference="User" label="User">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
       </SimpleForm>
     </Edit>
   );

@@ -11,8 +11,17 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate, IsNumber } from "class-validator";
+import {
+  IsString,
+  IsOptional,
+  IsDate,
+  ValidateNested,
+  IsNumber,
+} from "class-validator";
 import { Type } from "class-transformer";
+import { Space } from "../../space/base/Space";
+import { Transaction } from "../../transaction/base/Transaction";
+import { User } from "../../user/base/User";
 
 @ObjectType()
 class Booking {
@@ -78,6 +87,15 @@ class Booking {
 
   @ApiProperty({
     required: false,
+    type: () => Space,
+  })
+  @ValidateNested()
+  @Type(() => Space)
+  @IsOptional()
+  space?: Space | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -110,12 +128,30 @@ class Booking {
   totalPrice!: number | null;
 
   @ApiProperty({
+    required: false,
+    type: () => [Transaction],
+  })
+  @ValidateNested()
+  @Type(() => Transaction)
+  @IsOptional()
+  transactions?: Array<Transaction>;
+
+  @ApiProperty({
     required: true,
   })
   @IsDate()
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  user?: User | null;
 }
 
 export { Booking as Booking };

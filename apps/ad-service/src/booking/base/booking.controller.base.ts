@@ -27,6 +27,9 @@ import { BookingWhereUniqueInput } from "./BookingWhereUniqueInput";
 import { BookingFindManyArgs } from "./BookingFindManyArgs";
 import { BookingUpdateInput } from "./BookingUpdateInput";
 import { Booking } from "./Booking";
+import { TransactionFindManyArgs } from "../../transaction/base/TransactionFindManyArgs";
+import { Transaction } from "../../transaction/base/Transaction";
+import { TransactionWhereUniqueInput } from "../../transaction/base/TransactionWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -48,7 +51,21 @@ export class BookingControllerBase {
   })
   async create(@common.Body() data: BookingCreateInput): Promise<Booking> {
     return await this.service.create({
-      data: data,
+      data: {
+        ...data,
+
+        space: data.space
+          ? {
+              connect: data.space,
+            }
+          : undefined,
+
+        user: data.user
+          ? {
+              connect: data.user,
+            }
+          : undefined,
+      },
       select: {
         adId: true,
         advertiserId: true,
@@ -56,10 +73,23 @@ export class BookingControllerBase {
         createdAt: true,
         endDate: true,
         id: true,
+
+        space: {
+          select: {
+            id: true,
+          },
+        },
+
         spaceId: true,
         startDate: true,
         totalPrice: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -87,10 +117,23 @@ export class BookingControllerBase {
         createdAt: true,
         endDate: true,
         id: true,
+
+        space: {
+          select: {
+            id: true,
+          },
+        },
+
         spaceId: true,
         startDate: true,
         totalPrice: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -119,10 +162,23 @@ export class BookingControllerBase {
         createdAt: true,
         endDate: true,
         id: true,
+
+        space: {
+          select: {
+            id: true,
+          },
+        },
+
         spaceId: true,
         startDate: true,
         totalPrice: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -152,7 +208,21 @@ export class BookingControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          space: data.space
+            ? {
+                connect: data.space,
+              }
+            : undefined,
+
+          user: data.user
+            ? {
+                connect: data.user,
+              }
+            : undefined,
+        },
         select: {
           adId: true,
           advertiserId: true,
@@ -160,10 +230,23 @@ export class BookingControllerBase {
           createdAt: true,
           endDate: true,
           id: true,
+
+          space: {
+            select: {
+              id: true,
+            },
+          },
+
           spaceId: true,
           startDate: true,
           totalPrice: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -200,10 +283,23 @@ export class BookingControllerBase {
           createdAt: true,
           endDate: true,
           id: true,
+
+          space: {
+            select: {
+              id: true,
+            },
+          },
+
           spaceId: true,
           startDate: true,
           totalPrice: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -214,5 +310,119 @@ export class BookingControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/transactions")
+  @ApiNestedQuery(TransactionFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Transaction",
+    action: "read",
+    possession: "any",
+  })
+  async findManyTransactions(
+    @common.Req() request: Request,
+    @common.Param() params: BookingWhereUniqueInput
+  ): Promise<Transaction[]> {
+    const query = plainToClass(TransactionFindManyArgs, request.query);
+    const results = await this.service.findTransactions(params.id, {
+      ...query,
+      select: {
+        advertiserId: true,
+        amount: true,
+
+        booking: {
+          select: {
+            id: true,
+          },
+        },
+
+        bookingId: true,
+        createdAt: true,
+        id: true,
+        status: true,
+        transactionDate: true,
+        transactionId: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/transactions")
+  @nestAccessControl.UseRoles({
+    resource: "Booking",
+    action: "update",
+    possession: "any",
+  })
+  async connectTransactions(
+    @common.Param() params: BookingWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactions: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/transactions")
+  @nestAccessControl.UseRoles({
+    resource: "Booking",
+    action: "update",
+    possession: "any",
+  })
+  async updateTransactions(
+    @common.Param() params: BookingWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactions: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/transactions")
+  @nestAccessControl.UseRoles({
+    resource: "Booking",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectTransactions(
+    @common.Param() params: BookingWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactions: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

@@ -26,6 +26,8 @@ import { RatingCountArgs } from "./RatingCountArgs";
 import { RatingFindManyArgs } from "./RatingFindManyArgs";
 import { RatingFindUniqueArgs } from "./RatingFindUniqueArgs";
 import { Rating } from "./Rating";
+import { Space } from "../../space/base/Space";
+import { User } from "../../user/base/User";
 import { RatingService } from "../rating.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Rating)
@@ -91,9 +93,15 @@ export class RatingResolverBase {
       data: {
         ...args.data,
 
-        rating: args.data.rating
+        space: args.data.space
           ? {
-              connect: args.data.rating,
+              connect: args.data.space,
+            }
+          : undefined,
+
+        user: args.data.user
+          ? {
+              connect: args.data.user,
             }
           : undefined,
       },
@@ -116,9 +124,15 @@ export class RatingResolverBase {
         data: {
           ...args.data,
 
-          rating: args.data.rating
+          space: args.data.space
             ? {
-                connect: args.data.rating,
+                connect: args.data.space,
+              }
+            : undefined,
+
+          user: args.data.user
+            ? {
+                connect: args.data.user,
               }
             : undefined,
         },
@@ -155,39 +169,40 @@ export class RatingResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [Rating], { name: "ratings" })
+  @graphql.ResolveField(() => Space, {
+    nullable: true,
+    name: "space",
+  })
   @nestAccessControl.UseRoles({
-    resource: "Rating",
+    resource: "Space",
     action: "read",
     possession: "any",
   })
-  async resolveFieldRatings(
-    @graphql.Parent() parent: Rating,
-    @graphql.Args() args: RatingFindManyArgs
-  ): Promise<Rating[]> {
-    const results = await this.service.findRatings(parent.id, args);
+  async resolveFieldSpace(
+    @graphql.Parent() parent: Rating
+  ): Promise<Space | null> {
+    const result = await this.service.getSpace(parent.id);
 
-    if (!results) {
-      return [];
+    if (!result) {
+      return null;
     }
-
-    return results;
+    return result;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => Rating, {
+  @graphql.ResolveField(() => User, {
     nullable: true,
-    name: "rating",
+    name: "user",
   })
   @nestAccessControl.UseRoles({
-    resource: "Rating",
+    resource: "User",
     action: "read",
     possession: "any",
   })
-  async resolveFieldRating(
+  async resolveFieldUser(
     @graphql.Parent() parent: Rating
-  ): Promise<Rating | null> {
-    const result = await this.service.getRating(parent.id);
+  ): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

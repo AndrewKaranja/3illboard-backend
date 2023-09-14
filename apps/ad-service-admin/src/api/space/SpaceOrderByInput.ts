@@ -13,4 +13,5 @@ export type SpaceOrderByInput = {
   spaceId?: SortOrder;
   spaceType?: SortOrder;
   updatedAt?: SortOrder;
+  userId?: SortOrder;
 };

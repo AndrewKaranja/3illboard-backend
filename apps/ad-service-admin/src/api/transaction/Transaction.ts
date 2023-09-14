@@ -1,6 +1,10 @@
+import { Booking } from "../booking/Booking";
+import { User } from "../user/User";
+
 export type Transaction = {
   advertiserId: string | null;
   amount: string | null;
+  booking?: Booking | null;
   bookingId: string | null;
   createdAt: Date;
   id: string;
@@ -8,4 +12,5 @@ export type Transaction = {
   transactionDate: Date | null;
   transactionId: string | null;
   updatedAt: Date;
+  user?: User | null;
 };

@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import {
   Edit,
   SimpleForm,
@@ -6,7 +7,10 @@ import {
   TextInput,
   DateTimeInput,
   SelectInput,
+  ReferenceInput,
 } from "react-admin";
+
+import { UserTitle } from "../user/UserTitle";
 
 export const NotificationEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -14,7 +18,6 @@ export const NotificationEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="content" source="content" />
         <DateTimeInput label="date" source="date" />
-        <TextInput label="notificationID" source="notificationId" />
         <SelectInput
           source="status"
           label="status"
@@ -23,6 +26,9 @@ export const NotificationEdit = (props: EditProps): React.ReactElement => {
           allowEmpty
           optionValue="value"
         />
+        <ReferenceInput source="user.id" reference="User" label="User">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
         <TextInput label="userID" source="userId" />
       </SimpleForm>
     </Edit>

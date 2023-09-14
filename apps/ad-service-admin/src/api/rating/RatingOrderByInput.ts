@@ -5,8 +5,10 @@ export type RatingOrderByInput = {
   comment?: SortOrder;
   createdAt?: SortOrder;
   id?: SortOrder;
-  ratingId?: SortOrder;
+  rating?: SortOrder;
   reviewId?: SortOrder;
   spaceId?: SortOrder;
+  spaceId?: SortOrder;
   updatedAt?: SortOrder;
+  userId?: SortOrder;
 };

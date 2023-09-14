@@ -9,12 +9,18 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { InputType, Field } from "@nestjs/graphql";
+import { InputType, Field, Float } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { RatingWhereUniqueInput } from "./RatingWhereUniqueInput";
+import {
+  IsString,
+  IsOptional,
+  IsNumber,
+  ValidateNested,
+} from "class-validator";
+import { Decimal } from "decimal.js";
+import { SpaceWhereUniqueInput } from "../../space/base/SpaceWhereUniqueInput";
 import { Type } from "class-transformer";
-import { RatingUpdateManyWithoutRatingsInput } from "./RatingUpdateManyWithoutRatingsInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class RatingUpdateInput {
@@ -42,27 +48,14 @@ class RatingUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => RatingWhereUniqueInput,
+    type: Number,
   })
-  @ValidateNested()
-  @Type(() => RatingWhereUniqueInput)
+  @IsNumber()
   @IsOptional()
-  @Field(() => RatingWhereUniqueInput, {
+  @Field(() => Float, {
     nullable: true,
   })
-  rating?: RatingWhereUniqueInput | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => RatingUpdateManyWithoutRatingsInput,
-  })
-  @ValidateNested()
-  @Type(() => RatingUpdateManyWithoutRatingsInput)
-  @IsOptional()
-  @Field(() => RatingUpdateManyWithoutRatingsInput, {
-    nullable: true,
-  })
-  ratings?: RatingUpdateManyWithoutRatingsInput;
+  rating?: Decimal | null;
 
   @ApiProperty({
     required: false,
@@ -77,6 +70,18 @@ class RatingUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => SpaceWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => SpaceWhereUniqueInput)
+  @IsOptional()
+  @Field(() => SpaceWhereUniqueInput, {
+    nullable: true,
+  })
+  space?: SpaceWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -85,6 +90,18 @@ class RatingUpdateInput {
     nullable: true,
   })
   spaceId?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput | null;
 }
 
 export { RatingUpdateInput as RatingUpdateInput };
