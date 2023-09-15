@@ -9,7 +9,6 @@ export type Advertisment = {
   duration: string | null;
   id: string;
   space?: Space | null;
-  spaceId: string | null;
   updatedAt: Date;
   user?: User | null;
 };

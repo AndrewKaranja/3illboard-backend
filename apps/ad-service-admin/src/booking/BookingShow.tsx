@@ -28,7 +28,6 @@ export const BookingShow = (props: ShowProps): React.ReactElement => {
         <ReferenceField label="Space" source="space.id" reference="Space">
           <TextField source={SPACE_TITLE_FIELD} />
         </ReferenceField>
-        <TextField label="spaceID" source="spaceId" />
         <TextField label="startDate" source="startDate" />
         <TextField label="totalPrice" source="totalPrice" />
         <DateField source="updatedAt" label="Updated At" />
@@ -50,7 +49,6 @@ export const BookingShow = (props: ShowProps): React.ReactElement => {
             >
               <TextField source={BOOKING_TITLE_FIELD} />
             </ReferenceField>
-            <TextField label="bookingID" source="bookingId" />
             <DateField source="createdAt" label="Created At" />
             <TextField label="ID" source="id" />
             <TextField label="status" source="status" />

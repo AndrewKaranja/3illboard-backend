@@ -8,7 +8,6 @@ export type TransactionWhereInput = {
   advertiserId?: StringNullableFilter;
   amount?: StringNullableFilter;
   booking?: BookingWhereUniqueInput;
-  bookingId?: StringNullableFilter;
   id?: StringFilter;
   status?: "Option1";
   transactionDate?: DateTimeNullableFilter;

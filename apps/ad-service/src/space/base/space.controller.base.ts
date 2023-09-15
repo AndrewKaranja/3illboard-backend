@@ -310,7 +310,6 @@ export class SpaceControllerBase {
           },
         },
 
-        spaceId: true,
         updatedAt: true,
 
         user: {
@@ -423,7 +422,6 @@ export class SpaceControllerBase {
           },
         },
 
-        spaceId: true,
         startDate: true,
         totalPrice: true,
         updatedAt: true,
@@ -538,7 +536,6 @@ export class SpaceControllerBase {
           },
         },
 
-        spaceId: true,
         updatedAt: true,
 
         user: {

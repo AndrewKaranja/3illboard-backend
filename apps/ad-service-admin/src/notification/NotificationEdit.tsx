@@ -29,7 +29,6 @@ export const NotificationEdit = (props: EditProps): React.ReactElement => {
         <ReferenceInput source="user.id" reference="User" label="User">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
-        <TextInput label="userID" source="userId" />
       </SimpleForm>
     </Edit>
   );

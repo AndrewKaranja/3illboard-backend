@@ -22,7 +22,6 @@ export const TransactionCreate = (props: CreateProps): React.ReactElement => {
         <ReferenceInput source="booking.id" reference="Booking" label="Booking">
           <SelectInput optionText={BookingTitle} />
         </ReferenceInput>
-        <TextInput label="bookingID" source="bookingId" />
         <SelectInput
           source="status"
           label="status"

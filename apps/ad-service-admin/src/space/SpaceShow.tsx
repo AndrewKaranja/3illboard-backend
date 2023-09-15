@@ -48,7 +48,6 @@ export const SpaceShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Space" source="space.id" reference="Space">
               <TextField source={SPACE_TITLE_FIELD} />
             </ReferenceField>
-            <TextField label="spaceID" source="spaceId" />
             <DateField source="updatedAt" label="Updated At" />
             <ReferenceField label="User" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
@@ -70,7 +69,6 @@ export const SpaceShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Space" source="space.id" reference="Space">
               <TextField source={SPACE_TITLE_FIELD} />
             </ReferenceField>
-            <TextField label="spaceID" source="spaceId" />
             <TextField label="startDate" source="startDate" />
             <TextField label="totalPrice" source="totalPrice" />
             <DateField source="updatedAt" label="Updated At" />
@@ -90,7 +88,6 @@ export const SpaceShow = (props: ShowProps): React.ReactElement => {
             <ReferenceField label="Space" source="space.id" reference="Space">
               <TextField source={SPACE_TITLE_FIELD} />
             </ReferenceField>
-            <TextField label="spaceID" source="spaceId" />
             <DateField source="updatedAt" label="Updated At" />
             <ReferenceField label="User" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />

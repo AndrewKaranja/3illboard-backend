@@ -10,6 +10,5 @@ export type AdvertismentWhereInput = {
   duration?: StringNullableFilter;
   id?: StringFilter;
   space?: SpaceWhereUniqueInput;
-  spaceId?: StringNullableFilter;
   user?: UserWhereUniqueInput;
 };

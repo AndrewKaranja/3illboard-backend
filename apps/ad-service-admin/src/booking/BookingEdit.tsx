@@ -28,7 +28,6 @@ export const BookingEdit = (props: EditProps): React.ReactElement => {
         <ReferenceInput source="space.id" reference="Space" label="Space">
           <SelectInput optionText={SpaceTitle} />
         </ReferenceInput>
-        <TextInput label="spaceID" source="spaceId" />
         <DateTimeInput label="startDate" source="startDate" />
         <NumberInput label="totalPrice" source="totalPrice" />
         <ReferenceArrayInput

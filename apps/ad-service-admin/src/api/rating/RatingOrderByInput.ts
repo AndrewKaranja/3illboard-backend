@@ -8,7 +8,6 @@ export type RatingOrderByInput = {
   rating?: SortOrder;
   reviewId?: SortOrder;
   spaceId?: SortOrder;
-  spaceId?: SortOrder;
   updatedAt?: SortOrder;
   userId?: SortOrder;
 };

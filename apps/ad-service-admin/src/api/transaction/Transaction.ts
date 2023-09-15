@@ -5,7 +5,6 @@ export type Transaction = {
   advertiserId: string | null;
   amount: string | null;
   booking?: Booking | null;
-  bookingId: string | null;
   createdAt: Date;
   id: string;
   status?: "Option1" | null;

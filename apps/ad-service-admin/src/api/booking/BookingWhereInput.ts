@@ -13,7 +13,6 @@ export type BookingWhereInput = {
   endDate?: DateTimeNullableFilter;
   id?: StringFilter;
   space?: SpaceWhereUniqueInput;
-  spaceId?: StringNullableFilter;
   startDate?: DateTimeNullableFilter;
   totalPrice?: FloatNullableFilter;
   transactions?: TransactionListRelationFilter;

@@ -79,7 +79,6 @@ export class AdvertismentControllerBase {
           },
         },
 
-        spaceId: true,
         updatedAt: true,
 
         user: {
@@ -121,7 +120,6 @@ export class AdvertismentControllerBase {
           },
         },
 
-        spaceId: true,
         updatedAt: true,
 
         user: {
@@ -164,7 +162,6 @@ export class AdvertismentControllerBase {
           },
         },
 
-        spaceId: true,
         updatedAt: true,
 
         user: {
@@ -230,7 +227,6 @@ export class AdvertismentControllerBase {
             },
           },
 
-          spaceId: true,
           updatedAt: true,
 
           user: {
@@ -281,7 +277,6 @@ export class AdvertismentControllerBase {
             },
           },
 
-          spaceId: true,
           updatedAt: true,
 
           user: {

@@ -8,7 +8,6 @@ export type AdvertismentOrderByInput = {
   duration?: SortOrder;
   id?: SortOrder;
   spaceId?: SortOrder;
-  spaceId?: SortOrder;
   updatedAt?: SortOrder;
   userId?: SortOrder;
 };

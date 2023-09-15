@@ -15,7 +15,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
-import { DecimalNullableFilter } from "../../util/DecimalNullableFilter";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { SpaceWhereUniqueInput } from "../../space/base/SpaceWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
@@ -56,14 +56,14 @@ class RatingWhereInput {
 
   @ApiProperty({
     required: false,
-    type: DecimalNullableFilter,
+    type: IntNullableFilter,
   })
-  @Type(() => DecimalNullableFilter)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => DecimalNullableFilter, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  rating?: DecimalNullableFilter;
+  rating?: IntNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -87,17 +87,6 @@ class RatingWhereInput {
     nullable: true,
   })
   space?: SpaceWhereUniqueInput;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  spaceId?: StringNullableFilter;
 
   @ApiProperty({
     required: false,

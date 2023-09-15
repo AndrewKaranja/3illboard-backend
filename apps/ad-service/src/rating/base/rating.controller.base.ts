@@ -77,7 +77,6 @@ export class RatingControllerBase {
           },
         },
 
-        spaceId: true,
         updatedAt: true,
 
         user: {
@@ -119,7 +118,6 @@ export class RatingControllerBase {
           },
         },
 
-        spaceId: true,
         updatedAt: true,
 
         user: {
@@ -162,7 +160,6 @@ export class RatingControllerBase {
           },
         },
 
-        spaceId: true,
         updatedAt: true,
 
         user: {
@@ -228,7 +225,6 @@ export class RatingControllerBase {
             },
           },
 
-          spaceId: true,
           updatedAt: true,
 
           user: {
@@ -279,7 +275,6 @@ export class RatingControllerBase {
             },
           },
 
-          spaceId: true,
           updatedAt: true,
 
           user: {

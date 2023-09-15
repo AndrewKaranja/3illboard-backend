@@ -8,5 +8,4 @@ export type Notification = {
   status?: "Option1" | null;
   updatedAt: Date;
   user?: User | null;
-  userId: string | null;
 };

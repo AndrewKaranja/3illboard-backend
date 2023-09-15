@@ -21,7 +21,6 @@ const existingId = "existingId";
 const CREATE_INPUT = {
   advertiserId: "exampleAdvertiserId",
   amount: "exampleAmount",
-  bookingId: "exampleBookingId",
   createdAt: new Date(),
   id: "exampleId",
   transactionDate: new Date(),
@@ -31,7 +30,6 @@ const CREATE_INPUT = {
 const CREATE_RESULT = {
   advertiserId: "exampleAdvertiserId",
   amount: "exampleAmount",
-  bookingId: "exampleBookingId",
   createdAt: new Date(),
   id: "exampleId",
   transactionDate: new Date(),
@@ -42,7 +40,6 @@ const FIND_MANY_RESULT = [
   {
     advertiserId: "exampleAdvertiserId",
     amount: "exampleAmount",
-    bookingId: "exampleBookingId",
     createdAt: new Date(),
     id: "exampleId",
     transactionDate: new Date(),
@@ -53,7 +50,6 @@ const FIND_MANY_RESULT = [
 const FIND_ONE_RESULT = {
   advertiserId: "exampleAdvertiserId",
   amount: "exampleAmount",
-  bookingId: "exampleBookingId",
   createdAt: new Date(),
   id: "exampleId",
   transactionDate: new Date(),

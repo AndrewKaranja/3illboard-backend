@@ -76,17 +76,6 @@ class NotificationWhereInput {
     nullable: true,
   })
   user?: UserWhereUniqueInput;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  userId?: StringNullableFilter;
 }
 
 export { NotificationWhereInput as NotificationWhereInput };

@@ -9,17 +9,16 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { ObjectType, Field, Float } from "@nestjs/graphql";
+import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
   IsString,
   IsOptional,
   IsDate,
-  IsNumber,
+  IsInt,
   ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { Decimal } from "decimal.js";
 import { Space } from "../../space/base/Space";
 import { User } from "../../user/base/User";
 
@@ -67,12 +66,12 @@ class Rating {
     required: false,
     type: Number,
   })
-  @IsNumber()
+  @IsInt()
   @IsOptional()
-  @Field(() => Float, {
+  @Field(() => Number, {
     nullable: true,
   })
-  rating!: Decimal | null;
+  rating!: number | null;
 
   @ApiProperty({
     required: false,
@@ -93,17 +92,6 @@ class Rating {
   @Type(() => Space)
   @IsOptional()
   space?: Space | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  spaceId!: string | null;
 
   @ApiProperty({
     required: true,

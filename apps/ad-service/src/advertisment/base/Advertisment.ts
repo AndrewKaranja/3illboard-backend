@@ -88,17 +88,6 @@ class Advertisment {
   space?: Space | null;
 
   @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  spaceId!: string | null;
-
-  @ApiProperty({
     required: true,
   })
   @IsDate()
