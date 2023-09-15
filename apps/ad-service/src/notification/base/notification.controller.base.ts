@@ -72,8 +72,6 @@ export class NotificationControllerBase {
             id: true,
           },
         },
-
-        userId: true,
       },
     });
   }
@@ -107,8 +105,6 @@ export class NotificationControllerBase {
             id: true,
           },
         },
-
-        userId: true,
       },
     });
   }
@@ -143,8 +139,6 @@ export class NotificationControllerBase {
             id: true,
           },
         },
-
-        userId: true,
       },
     });
     if (result === null) {
@@ -196,8 +190,6 @@ export class NotificationControllerBase {
               id: true,
             },
           },
-
-          userId: true,
         },
       });
     } catch (error) {
@@ -240,8 +232,6 @@ export class NotificationControllerBase {
               id: true,
             },
           },
-
-          userId: true,
         },
       });
     } catch (error) {

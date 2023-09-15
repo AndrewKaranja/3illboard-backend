@@ -23,9 +23,8 @@ const CREATE_INPUT = {
   comment: "exampleComment",
   createdAt: new Date(),
   id: "exampleId",
-  rating: 42.424242424,
+  rating: 42,
   reviewId: "exampleReviewId",
-  spaceId: "exampleSpaceId",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
@@ -33,9 +32,8 @@ const CREATE_RESULT = {
   comment: "exampleComment",
   createdAt: new Date(),
   id: "exampleId",
-  rating: 42.424242424,
+  rating: 42,
   reviewId: "exampleReviewId",
-  spaceId: "exampleSpaceId",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
@@ -44,9 +42,8 @@ const FIND_MANY_RESULT = [
     comment: "exampleComment",
     createdAt: new Date(),
     id: "exampleId",
-    rating: 42.424242424,
+    rating: 42,
     reviewId: "exampleReviewId",
-    spaceId: "exampleSpaceId",
     updatedAt: new Date(),
   },
 ];
@@ -55,9 +52,8 @@ const FIND_ONE_RESULT = {
   comment: "exampleComment",
   createdAt: new Date(),
   id: "exampleId",
-  rating: 42.424242424,
+  rating: 42,
   reviewId: "exampleReviewId",
-  spaceId: "exampleSpaceId",
   updatedAt: new Date(),
 };
 

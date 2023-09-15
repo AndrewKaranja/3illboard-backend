@@ -1,4 +1,3 @@
-import { Decimal } from "decimal.js";
 import { Space } from "../space/Space";
 import { User } from "../user/User";
 
@@ -7,10 +6,9 @@ export type Rating = {
   comment: string | null;
   createdAt: Date;
   id: string;
-  rating: Decimal | null;
+  rating: number | null;
   reviewId: string | null;
   space?: Space | null;
-  spaceId: string | null;
   updatedAt: Date;
   user?: User | null;
 };

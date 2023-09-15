@@ -5,5 +5,4 @@ export type NotificationCreateInput = {
   date?: Date | null;
   status?: "Option1" | null;
   user?: UserWhereUniqueInput | null;
-  userId?: string | null;
 };

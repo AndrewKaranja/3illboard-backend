@@ -258,7 +258,6 @@ export class UserControllerBase {
           },
         },
 
-        spaceId: true,
         updatedAt: true,
 
         user: {
@@ -371,7 +370,6 @@ export class UserControllerBase {
           },
         },
 
-        spaceId: true,
         startDate: true,
         totalPrice: true,
         updatedAt: true,
@@ -485,8 +483,6 @@ export class UserControllerBase {
             id: true,
           },
         },
-
-        userId: true,
       },
     });
     if (results === null) {
@@ -592,7 +588,6 @@ export class UserControllerBase {
           },
         },
 
-        spaceId: true,
         updatedAt: true,
 
         user: {
@@ -811,7 +806,6 @@ export class UserControllerBase {
           },
         },
 
-        bookingId: true,
         createdAt: true,
         id: true,
         status: true,

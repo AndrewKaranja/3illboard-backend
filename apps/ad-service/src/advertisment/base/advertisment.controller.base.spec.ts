@@ -25,7 +25,6 @@ const CREATE_INPUT = {
   createdAt: new Date(),
   duration: "exampleDuration",
   id: "exampleId",
-  spaceId: "exampleSpaceId",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
@@ -35,7 +34,6 @@ const CREATE_RESULT = {
   createdAt: new Date(),
   duration: "exampleDuration",
   id: "exampleId",
-  spaceId: "exampleSpaceId",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
@@ -46,7 +44,6 @@ const FIND_MANY_RESULT = [
     createdAt: new Date(),
     duration: "exampleDuration",
     id: "exampleId",
-    spaceId: "exampleSpaceId",
     updatedAt: new Date(),
   },
 ];
@@ -57,7 +54,6 @@ const FIND_ONE_RESULT = {
   createdAt: new Date(),
   duration: "exampleDuration",
   id: "exampleId",
-  spaceId: "exampleSpaceId",
   updatedAt: new Date(),
 };
 

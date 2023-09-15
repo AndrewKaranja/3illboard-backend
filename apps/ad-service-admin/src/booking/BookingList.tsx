@@ -30,7 +30,6 @@ export const BookingList = (props: ListProps): React.ReactElement => {
         <ReferenceField label="Space" source="space.id" reference="Space">
           <TextField source={SPACE_TITLE_FIELD} />
         </ReferenceField>
-        <TextField label="spaceID" source="spaceId" />
         <TextField label="startDate" source="startDate" />
         <TextField label="totalPrice" source="totalPrice" />
         <DateField source="updatedAt" label="Updated At" />

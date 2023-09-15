@@ -10,7 +10,6 @@ export type Booking = {
   endDate: Date | null;
   id: string;
   space?: Space | null;
-  spaceId: string | null;
   startDate: Date | null;
   totalPrice: number | null;
   transactions?: Array<Transaction>;

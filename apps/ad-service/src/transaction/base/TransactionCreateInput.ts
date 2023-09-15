@@ -61,17 +61,6 @@ class TransactionCreateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  bookingId?: string | null;
-
-  @ApiProperty({
-    required: false,
     enum: EnumTransactionStatus,
   })
   @IsEnum(EnumTransactionStatus)

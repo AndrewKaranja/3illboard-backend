@@ -19,12 +19,11 @@ export const RatingEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="advertiserID" source="advertiserId" />
         <TextInput label="comment" source="comment" />
-        <NumberInput label="rating" source="rating" />
+        <NumberInput step={1} label="rating" source="rating" />
         <TextInput label="reviewID" source="reviewId" />
         <ReferenceInput source="space.id" reference="Space" label="Space">
           <SelectInput optionText={SpaceTitle} />
         </ReferenceInput>
-        <TextInput label="spaceID" source="spaceId" />
         <ReferenceInput source="user.id" reference="User" label="User">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>

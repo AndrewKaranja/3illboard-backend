@@ -8,7 +8,6 @@ export type BookingCreateInput = {
   bookingId?: string | null;
   endDate?: Date | null;
   space?: SpaceWhereUniqueInput | null;
-  spaceId?: string | null;
   startDate?: Date | null;
   totalPrice?: number | null;
   transactions?: TransactionCreateNestedManyWithoutBookingsInput;

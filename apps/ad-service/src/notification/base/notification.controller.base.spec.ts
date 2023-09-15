@@ -24,7 +24,6 @@ const CREATE_INPUT = {
   date: new Date(),
   id: "exampleId",
   updatedAt: new Date(),
-  userId: "exampleUserId",
 };
 const CREATE_RESULT = {
   content: "exampleContent",
@@ -32,7 +31,6 @@ const CREATE_RESULT = {
   date: new Date(),
   id: "exampleId",
   updatedAt: new Date(),
-  userId: "exampleUserId",
 };
 const FIND_MANY_RESULT = [
   {
@@ -41,7 +39,6 @@ const FIND_MANY_RESULT = [
     date: new Date(),
     id: "exampleId",
     updatedAt: new Date(),
-    userId: "exampleUserId",
   },
 ];
 const FIND_ONE_RESULT = {
@@ -50,7 +47,6 @@ const FIND_ONE_RESULT = {
   date: new Date(),
   id: "exampleId",
   updatedAt: new Date(),
-  userId: "exampleUserId",
 };
 
 const service = {

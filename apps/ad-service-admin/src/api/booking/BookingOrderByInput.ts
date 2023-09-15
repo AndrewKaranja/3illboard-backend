@@ -8,7 +8,6 @@ export type BookingOrderByInput = {
   endDate?: SortOrder;
   id?: SortOrder;
   spaceId?: SortOrder;
-  spaceId?: SortOrder;
   startDate?: SortOrder;
   totalPrice?: SortOrder;
   updatedAt?: SortOrder;

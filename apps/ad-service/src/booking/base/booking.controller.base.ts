@@ -80,7 +80,6 @@ export class BookingControllerBase {
           },
         },
 
-        spaceId: true,
         startDate: true,
         totalPrice: true,
         updatedAt: true,
@@ -124,7 +123,6 @@ export class BookingControllerBase {
           },
         },
 
-        spaceId: true,
         startDate: true,
         totalPrice: true,
         updatedAt: true,
@@ -169,7 +167,6 @@ export class BookingControllerBase {
           },
         },
 
-        spaceId: true,
         startDate: true,
         totalPrice: true,
         updatedAt: true,
@@ -237,7 +234,6 @@ export class BookingControllerBase {
             },
           },
 
-          spaceId: true,
           startDate: true,
           totalPrice: true,
           updatedAt: true,
@@ -290,7 +286,6 @@ export class BookingControllerBase {
             },
           },
 
-          spaceId: true,
           startDate: true,
           totalPrice: true,
           updatedAt: true,
@@ -337,7 +332,6 @@ export class BookingControllerBase {
           },
         },
 
-        bookingId: true,
         createdAt: true,
         id: true,
         status: true,

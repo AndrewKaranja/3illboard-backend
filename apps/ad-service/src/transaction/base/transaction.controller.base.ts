@@ -75,7 +75,6 @@ export class TransactionControllerBase {
           },
         },
 
-        bookingId: true,
         createdAt: true,
         id: true,
         status: true,
@@ -118,7 +117,6 @@ export class TransactionControllerBase {
           },
         },
 
-        bookingId: true,
         createdAt: true,
         id: true,
         status: true,
@@ -162,7 +160,6 @@ export class TransactionControllerBase {
           },
         },
 
-        bookingId: true,
         createdAt: true,
         id: true,
         status: true,
@@ -229,7 +226,6 @@ export class TransactionControllerBase {
             },
           },
 
-          bookingId: true,
           createdAt: true,
           id: true,
           status: true,
@@ -281,7 +277,6 @@ export class TransactionControllerBase {
             },
           },
 
-          bookingId: true,
           createdAt: true,
           id: true,
           status: true,

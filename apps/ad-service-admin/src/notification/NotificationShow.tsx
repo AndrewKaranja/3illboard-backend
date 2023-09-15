@@ -22,7 +22,6 @@ export const NotificationShow = (props: ShowProps): React.ReactElement => {
         <ReferenceField label="User" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
-        <TextField label="userID" source="userId" />
       </SimpleShowLayout>
     </Show>
   );

@@ -19,7 +19,6 @@ export const TransactionShow = (props: ShowProps): React.ReactElement => {
         <ReferenceField label="Booking" source="booking.id" reference="Booking">
           <TextField source={BOOKING_TITLE_FIELD} />
         </ReferenceField>
-        <TextField label="bookingID" source="bookingId" />
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <TextField label="status" source="status" />

@@ -9,5 +9,4 @@ export type NotificationWhereInput = {
   id?: StringFilter;
   status?: "Option1";
   user?: UserWhereUniqueInput;
-  userId?: StringNullableFilter;
 };

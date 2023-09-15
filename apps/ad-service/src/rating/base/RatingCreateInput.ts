@@ -9,15 +9,9 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { InputType, Field, Float } from "@nestjs/graphql";
+import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import {
-  IsString,
-  IsOptional,
-  IsNumber,
-  ValidateNested,
-} from "class-validator";
-import { Decimal } from "decimal.js";
+import { IsString, IsOptional, IsInt, ValidateNested } from "class-validator";
 import { SpaceWhereUniqueInput } from "../../space/base/SpaceWhereUniqueInput";
 import { Type } from "class-transformer";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
@@ -50,12 +44,12 @@ class RatingCreateInput {
     required: false,
     type: Number,
   })
-  @IsNumber()
+  @IsInt()
   @IsOptional()
-  @Field(() => Float, {
+  @Field(() => Number, {
     nullable: true,
   })
-  rating?: Decimal | null;
+  rating?: number | null;
 
   @ApiProperty({
     required: false,
@@ -79,17 +73,6 @@ class RatingCreateInput {
     nullable: true,
   })
   space?: SpaceWhereUniqueInput | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  spaceId?: string | null;
 
   @ApiProperty({
     required: false,

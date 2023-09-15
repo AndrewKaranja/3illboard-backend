@@ -7,6 +7,5 @@ export type AdvertismentUpdateInput = {
   content?: string | null;
   duration?: string | null;
   space?: SpaceWhereUniqueInput | null;
-  spaceId?: string | null;
   user?: UserWhereUniqueInput | null;
 };

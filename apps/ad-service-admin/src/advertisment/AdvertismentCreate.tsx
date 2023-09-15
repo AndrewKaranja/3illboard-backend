@@ -21,7 +21,6 @@ export const AdvertismentCreate = (props: CreateProps): React.ReactElement => {
         <ReferenceInput source="space.id" reference="Space" label="Space">
           <SelectInput optionText={SpaceTitle} />
         </ReferenceInput>
-        <TextInput label="spaceID" source="spaceId" />
         <ReferenceInput source="user.id" reference="User" label="User">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
