@@ -39,6 +39,7 @@ model Space {
   photos        Json?
   price         Float?
   ratings       Rating[]
+  spaceContact  String?
   spaceId       String         @unique
   spaceType     String?
   updatedAt     DateTime       @updatedAt

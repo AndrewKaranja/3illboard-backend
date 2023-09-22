@@ -145,6 +145,17 @@ class Space {
   ratings?: Array<Rating>;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  spaceContact!: string | null;
+
+  @ApiProperty({
     required: true,
     type: String,
   })

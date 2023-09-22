@@ -148,6 +148,17 @@ class SpaceUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  spaceContact?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   spaceId?: string;
 
   @ApiProperty({

@@ -17,6 +17,7 @@ export type Space = {
   photos: JsonValue;
   price: number | null;
   ratings?: Array<Rating>;
+  spaceContact: string | null;
   spaceId: string;
   spaceType: string | null;
   updatedAt: Date;

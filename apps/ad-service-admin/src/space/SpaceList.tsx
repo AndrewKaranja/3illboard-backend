@@ -29,6 +29,7 @@ export const SpaceList = (props: ListProps): React.ReactElement => {
         <TextField label="ownerID" source="ownerId" />
         <TextField label="photos" source="photos" />
         <TextField label="price" source="price" />
+        <TextField label="spaceContact" source="spaceContact" />
         <TextField label="spaceID" source="spaceId" />
         <TextField label="spaceType" source="spaceType" />
         <DateField source="updatedAt" label="Updated At" />

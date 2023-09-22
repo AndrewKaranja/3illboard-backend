@@ -696,6 +696,7 @@ export class UserControllerBase {
         ownerId: true,
         photos: true,
         price: true,
+        spaceContact: true,
         spaceId: true,
         spaceType: true,
         updatedAt: true,

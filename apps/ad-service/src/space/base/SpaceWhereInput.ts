@@ -157,6 +157,17 @@ class SpaceWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
+  spaceContact?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
   spaceType?: StringNullableFilter;
 
   @ApiProperty({

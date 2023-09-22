@@ -19,6 +19,7 @@ export type SpaceWhereInput = {
   photos?: JsonFilter;
   price?: FloatNullableFilter;
   ratings?: RatingListRelationFilter;
+  spaceContact?: StringNullableFilter;
   spaceType?: StringNullableFilter;
   user?: UserWhereUniqueInput;
 };

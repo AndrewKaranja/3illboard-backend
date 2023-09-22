@@ -10,6 +10,7 @@ export type SpaceOrderByInput = {
   ownerId?: SortOrder;
   photos?: SortOrder;
   price?: SortOrder;
+  spaceContact?: SortOrder;
   spaceId?: SortOrder;
   spaceType?: SortOrder;
   updatedAt?: SortOrder;

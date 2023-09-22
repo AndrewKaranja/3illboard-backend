@@ -52,6 +52,7 @@ export const SpaceCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={RatingTitle} />
         </ReferenceArrayInput>
+        <TextInput label="spaceContact" source="spaceContact" />
         <TextInput label="spaceID" source="spaceId" />
         <TextInput label="spaceType" source="spaceType" />
         <ReferenceInput source="user.id" reference="User" label="User">

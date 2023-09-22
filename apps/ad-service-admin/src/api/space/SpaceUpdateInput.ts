@@ -15,6 +15,7 @@ export type SpaceUpdateInput = {
   photos?: InputJsonValue;
   price?: number | null;
   ratings?: RatingUpdateManyWithoutSpacesInput;
+  spaceContact?: string | null;
   spaceId?: string;
   spaceType?: string | null;
   user?: UserWhereUniqueInput | null;

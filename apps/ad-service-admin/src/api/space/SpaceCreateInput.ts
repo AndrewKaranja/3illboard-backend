@@ -15,6 +15,7 @@ export type SpaceCreateInput = {
   photos?: InputJsonValue;
   price?: number | null;
   ratings?: RatingCreateNestedManyWithoutSpacesInput;
+  spaceContact?: string | null;
   spaceId: string;
   spaceType?: string | null;
   user?: UserWhereUniqueInput | null;
