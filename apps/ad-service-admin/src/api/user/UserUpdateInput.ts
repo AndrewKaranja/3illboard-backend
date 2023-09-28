@@ -15,6 +15,7 @@ export type UserUpdateInput = {
   lastName?: string | null;
   notifications?: NotificationUpdateManyWithoutUsersInput;
   password?: string;
+  phoneNumber?: string | null;
   ratings?: RatingUpdateManyWithoutUsersInput;
   roles?: InputJsonValue;
   spaces?: SpaceUpdateManyWithoutUsersInput;
