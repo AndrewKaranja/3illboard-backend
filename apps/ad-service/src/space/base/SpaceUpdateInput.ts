@@ -16,6 +16,7 @@ import {
   ValidateNested,
   IsOptional,
   IsString,
+  IsBoolean,
   IsNumber,
 } from "class-validator";
 import { Type } from "class-transformer";
@@ -52,6 +53,17 @@ class SpaceUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  bookingFee?: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => BookingUpdateManyWithoutSpacesInput,
   })
   @ValidateNested()
@@ -61,6 +73,28 @@ class SpaceUpdateInput {
     nullable: true,
   })
   bookings?: BookingUpdateManyWithoutSpacesInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  country?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  county?: string | null;
 
   @ApiProperty({
     required: false,
@@ -93,7 +127,94 @@ class SpaceUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  distanceToGround?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  facingRoad?: boolean | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  farthestVisibility?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  landmark?: string | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  legalDocs?: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   location?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  maintenanceCharge?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  maintenanceInterval?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  minListingPeriod?: string | null;
 
   @ApiProperty({
     required: false,
@@ -129,6 +250,17 @@ class SpaceUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  pricingPeriod?: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => RatingUpdateManyWithoutSpacesInput,
   })
   @ValidateNested()
@@ -148,7 +280,28 @@ class SpaceUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  showPriceAs?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   spaceContact?: string | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  spaceFeatures?: InputJsonValue;
 
   @ApiProperty({
     required: false,
@@ -160,6 +313,28 @@ class SpaceUpdateInput {
     nullable: true,
   })
   spaceId?: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  spaceRestrictions?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  spaceTitle?: string | null;
 
   @ApiProperty({
     required: false,
@@ -183,6 +358,17 @@ class SpaceUpdateInput {
     nullable: true,
   })
   user?: UserWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  visibleAtNight?: boolean | null;
 }
 
 export { SpaceUpdateInput as SpaceUpdateInput };
