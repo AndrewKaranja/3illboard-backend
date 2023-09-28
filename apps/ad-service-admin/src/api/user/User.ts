@@ -16,6 +16,7 @@ export type User = {
   lastLogin: Date;
   lastName: string | null;
   notifications?: Array<Notification>;
+  phoneNumber: string | null;
   ratings?: Array<Rating>;
   roles: JsonValue;
   spaces?: Array<Space>;
