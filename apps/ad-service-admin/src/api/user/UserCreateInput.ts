@@ -15,6 +15,7 @@ export type UserCreateInput = {
   lastName?: string | null;
   notifications?: NotificationCreateNestedManyWithoutUsersInput;
   password: string;
+  phoneNumber?: string | null;
   ratings?: RatingCreateNestedManyWithoutUsersInput;
   roles: InputJsonValue;
   spaces?: SpaceCreateNestedManyWithoutUsersInput;
