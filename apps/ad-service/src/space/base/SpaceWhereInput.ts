@@ -15,9 +15,10 @@ import { AdvertismentListRelationFilter } from "../../advertisment/base/Advertis
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { JsonFilter } from "../../util/JsonFilter";
-import { BookingListRelationFilter } from "../../booking/base/BookingListRelationFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { BookingListRelationFilter } from "../../booking/base/BookingListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { RatingListRelationFilter } from "../../rating/base/RatingListRelationFilter";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
@@ -49,6 +50,17 @@ class SpaceWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  bookingFee?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => BookingListRelationFilter,
   })
   @ValidateNested()
@@ -58,6 +70,28 @@ class SpaceWhereInput {
     nullable: true,
   })
   bookings?: BookingListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  country?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  county?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -83,6 +117,39 @@ class SpaceWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  distanceToGround?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanNullableFilter,
+  })
+  @Type(() => BooleanNullableFilter)
+  @IsOptional()
+  @Field(() => BooleanNullableFilter, {
+    nullable: true,
+  })
+  facingRoad?: BooleanNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  farthestVisibility?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: StringFilter,
   })
   @Type(() => StringFilter)
@@ -101,7 +168,62 @@ class SpaceWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
+  landmark?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: JsonFilter,
+  })
+  @Type(() => JsonFilter)
+  @IsOptional()
+  @Field(() => JsonFilter, {
+    nullable: true,
+  })
+  legalDocs?: JsonFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
   location?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  maintenanceCharge?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  maintenanceInterval?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  minListingPeriod?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -138,6 +260,17 @@ class SpaceWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  pricingPeriod?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => RatingListRelationFilter,
   })
   @ValidateNested()
@@ -147,6 +280,61 @@ class SpaceWhereInput {
     nullable: true,
   })
   ratings?: RatingListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  showPriceAs?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  spaceContact?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: JsonFilter,
+  })
+  @Type(() => JsonFilter)
+  @IsOptional()
+  @Field(() => JsonFilter, {
+    nullable: true,
+  })
+  spaceFeatures?: JsonFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  spaceRestrictions?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  spaceTitle?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -170,6 +358,17 @@ class SpaceWhereInput {
     nullable: true,
   })
   user?: UserWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanNullableFilter,
+  })
+  @Type(() => BooleanNullableFilter)
+  @IsOptional()
+  @Field(() => BooleanNullableFilter, {
+    nullable: true,
+  })
+  visibleAtNight?: BooleanNullableFilter;
 }
 
 export { SpaceWhereInput as SpaceWhereInput };

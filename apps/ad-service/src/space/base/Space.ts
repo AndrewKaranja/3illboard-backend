@@ -15,8 +15,9 @@ import { Advertisment } from "../../advertisment/base/Advertisment";
 import {
   ValidateNested,
   IsOptional,
-  IsDate,
   IsString,
+  IsDate,
+  IsBoolean,
   IsNumber,
 } from "class-validator";
 import { Type } from "class-transformer";
@@ -50,12 +51,45 @@ class Space {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  bookingFee!: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => [Booking],
   })
   @ValidateNested()
   @Type(() => Booking)
   @IsOptional()
   bookings?: Array<Booking>;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  country!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  county!: string | null;
 
   @ApiProperty({
     required: true,
@@ -85,6 +119,39 @@ class Space {
   dimensions!: string;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  distanceToGround!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  facingRoad!: boolean | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  farthestVisibility!: string | null;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
@@ -101,7 +168,61 @@ class Space {
   @Field(() => String, {
     nullable: true,
   })
+  landmark!: string | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  legalDocs!: JsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   location!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  maintenanceCharge!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  maintenanceInterval!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  minListingPeriod!: string | null;
 
   @ApiProperty({
     required: false,
@@ -137,6 +258,17 @@ class Space {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  pricingPeriod!: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => [Rating],
   })
   @ValidateNested()
@@ -145,12 +277,66 @@ class Space {
   ratings?: Array<Rating>;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  showPriceAs!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  spaceContact!: string | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  spaceFeatures!: JsonValue;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
   @IsString()
   @Field(() => String)
   spaceId!: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  spaceRestrictions!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  spaceTitle!: string | null;
 
   @ApiProperty({
     required: false,
@@ -179,6 +365,17 @@ class Space {
   @Type(() => User)
   @IsOptional()
   user?: User | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  visibleAtNight!: boolean | null;
 }
 
 export { Space as Space };
