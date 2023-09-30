@@ -125,7 +125,7 @@ class UserUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  phoneNumber?: string;
+  phoneNumber?: string | null;
 
   @ApiProperty({
     required: false,

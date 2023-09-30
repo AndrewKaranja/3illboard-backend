@@ -18,7 +18,7 @@ model User {
   lastName      String?
   notifications Notification[]
   password      String
-  phoneNumber   String
+  phoneNumber   String?
   ratings       Rating[]
   roles         Json
   spaces        Space[]

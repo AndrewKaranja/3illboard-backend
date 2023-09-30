@@ -15,7 +15,7 @@ export type UserWhereInput = {
   id?: StringFilter;
   lastName?: StringNullableFilter;
   notifications?: NotificationListRelationFilter;
-  phoneNumber?: StringFilter;
+  phoneNumber?: StringNullableFilter;
   ratings?: RatingListRelationFilter;
   spaces?: SpaceListRelationFilter;
   transactions?: TransactionListRelationFilter;
