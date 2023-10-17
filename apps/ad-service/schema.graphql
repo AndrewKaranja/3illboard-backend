@@ -511,6 +511,20 @@ type Space {
   updatedAt: DateTime!
   user: User
   visibleAtNight: Boolean
+  bookings(orderBy: [BookingOrderByInput!], skip: Float, take: Float, where: BookingWhereInput): [Booking!]!
+  createdAt: DateTime!
+  description: String
+  dimensions: String!
+  id: String!
+  location: String
+  ownerId: String
+  photos: JSON
+  price: Float
+  ratings(orderBy: [RatingOrderByInput!], skip: Float, take: Float, where: RatingWhereInput): [Rating!]!
+  spaceId: String!
+  spaceType: String
+  updatedAt: DateTime!
+  user: User
 }
 
 input SpaceCreateInput {
@@ -545,6 +559,17 @@ input SpaceCreateInput {
   spaceType: String
   user: UserWhereUniqueInput
   visibleAtNight: Boolean
+  bookings: BookingCreateNestedManyWithoutSpacesInput
+  description: String
+  dimensions: String!
+  location: String
+  ownerId: String
+  photos: JSON
+  price: Float
+  ratings: RatingCreateNestedManyWithoutSpacesInput
+  spaceId: String!
+  spaceType: String
+  user: UserWhereUniqueInput
 }
 
 input SpaceCreateNestedManyWithoutUsersInput {
@@ -589,6 +614,18 @@ input SpaceOrderByInput {
   updatedAt: SortOrder
   userId: SortOrder
   visibleAtNight: SortOrder
+  createdAt: SortOrder
+  description: SortOrder
+  dimensions: SortOrder
+  id: SortOrder
+  location: SortOrder
+  ownerId: SortOrder
+  photos: SortOrder
+  price: SortOrder
+  spaceId: SortOrder
+  spaceType: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
 }
 
 input SpaceUpdateInput {
@@ -623,6 +660,17 @@ input SpaceUpdateInput {
   spaceType: String
   user: UserWhereUniqueInput
   visibleAtNight: Boolean
+  bookings: BookingUpdateManyWithoutSpacesInput
+  description: String
+  dimensions: String
+  location: String
+  ownerId: String
+  photos: JSON
+  price: Float
+  ratings: RatingUpdateManyWithoutSpacesInput
+  spaceId: String
+  spaceType: String
+  user: UserWhereUniqueInput
 }
 
 input SpaceUpdateManyWithoutUsersInput {
@@ -663,6 +711,17 @@ input SpaceWhereInput {
   spaceType: StringNullableFilter
   user: UserWhereUniqueInput
   visibleAtNight: BooleanNullableFilter
+  bookings: BookingListRelationFilter
+  description: StringNullableFilter
+  dimensions: StringFilter
+  id: StringFilter
+  location: StringNullableFilter
+  ownerId: StringNullableFilter
+  photos: JsonFilter
+  price: FloatNullableFilter
+  ratings: RatingListRelationFilter
+  spaceType: StringNullableFilter
+  user: UserWhereUniqueInput
 }
 
 input SpaceWhereUniqueInput {

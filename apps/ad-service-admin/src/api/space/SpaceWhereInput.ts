@@ -26,7 +26,7 @@ export type SpaceWhereInput = {
   location?: StringNullableFilter;
   maintenanceCharge?: StringNullableFilter;
   maintenanceInterval?: StringNullableFilter;
-  minListingPeriod?: StringNullableFilter;
+  minBookingPeriod?: StringNullableFilter;
   ownerId?: StringNullableFilter;
   photos?: JsonFilter;
   price?: FloatNullableFilter;

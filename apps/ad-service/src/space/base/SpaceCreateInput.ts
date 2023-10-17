@@ -211,7 +211,7 @@ class SpaceCreateInput {
   @Field(() => String, {
     nullable: true,
   })
-  minListingPeriod?: string | null;
+  minBookingPeriod?: string | null;
 
   @ApiProperty({
     required: false,

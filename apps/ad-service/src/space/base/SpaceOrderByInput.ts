@@ -204,7 +204,7 @@ class SpaceOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  minListingPeriod?: SortOrder;
+  minBookingPeriod?: SortOrder;
 
   @ApiProperty({
     required: false,

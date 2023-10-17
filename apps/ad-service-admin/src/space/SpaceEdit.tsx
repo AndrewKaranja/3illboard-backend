@@ -52,7 +52,7 @@ export const SpaceEdit = (props: EditProps): React.ReactElement => {
         <TextInput label="location" source="location" />
         <TextInput label="maintenanceCharge" source="maintenanceCharge" />
         <TextInput label="maintenanceInterval" source="maintenanceInterval" />
-        <TextInput label="minListingPeriod" source="minListingPeriod" />
+        <TextInput label="minBookingPeriod" source="minBookingPeriod" />
         <TextInput label="ownerID" source="ownerId" />
         <div />
         <NumberInput label="price" source="price" />

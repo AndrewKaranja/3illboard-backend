@@ -107,12 +107,15 @@ class User {
   notifications?: Array<Notification>;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
-  @Field(() => String)
-  phoneNumber!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  phoneNumber!: string | null;
 
   @ApiProperty({
     required: false,

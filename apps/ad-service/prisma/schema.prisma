@@ -18,7 +18,7 @@ model User {
   lastName      String?
   notifications Notification[]
   password      String
-  phoneNumber   String
+  phoneNumber   String?
   ratings       Rating[]
   roles         Json
   spaces        Space[]
@@ -46,7 +46,7 @@ model Space {
   location            String?
   maintenanceCharge   String?
   maintenanceInterval String?
-  minListingPeriod    String?
+  minBookingPeriod    String?
   ownerId             String?
   photos              Json?
   price               Float?

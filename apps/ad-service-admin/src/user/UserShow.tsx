@@ -129,7 +129,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
               label="maintenanceInterval"
               source="maintenanceInterval"
             />
-            <TextField label="minListingPeriod" source="minListingPeriod" />
+            <TextField label="minBookingPeriod" source="minBookingPeriod" />
             <TextField label="ownerID" source="ownerId" />
             <TextField label="photos" source="photos" />
             <TextField label="price" source="price" />
