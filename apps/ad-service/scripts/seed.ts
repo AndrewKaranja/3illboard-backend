@@ -31,7 +31,7 @@ async function seed(bcryptSalt: Salt) {
     roles: ["user"],
     email: "example@example.com",
     lastLogin: new Date(),
-    phoneNumber: "",
+    phoneNumber: "254711261436",
   };
 
   const response = await client.user.upsert({

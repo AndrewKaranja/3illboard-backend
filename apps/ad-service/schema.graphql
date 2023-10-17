@@ -180,6 +180,15 @@ input BookingWhereUniqueInput {
   id: String!
 }
 
+input BooleanNullableFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+input CheckUserValues {
+  email: String!
+}
+
 input Credentials {
   password: String!
   username: String!
@@ -266,6 +275,7 @@ type Mutation {
   deleteTransaction(where: TransactionWhereUniqueInput!): Transaction!
   deleteUser(where: UserWhereUniqueInput!): User!
   login(credentials: Credentials!): UserInfo!
+  signup(SignupCredentials: SignupCredentials!): UserInfo!
   updateAdvertisment(data: AdvertismentUpdateInput!, where: AdvertismentWhereUniqueInput!): Advertisment!
   updateBooking(data: BookingUpdateInput!, where: BookingWhereUniqueInput!): Booking!
   updateNotification(data: NotificationUpdateInput!, where: NotificationWhereUniqueInput!): Notification!
@@ -349,6 +359,8 @@ type Query {
   advertisments(orderBy: [AdvertismentOrderByInput!], skip: Float, take: Float, where: AdvertismentWhereInput): [Advertisment!]!
   booking(where: BookingWhereUniqueInput!): Booking
   bookings(orderBy: [BookingOrderByInput!], skip: Float, take: Float, where: BookingWhereInput): [Booking!]!
+  checkUser(CheckUserValues: CheckUserValues!): User!
+  me: User!
   notification(where: NotificationWhereUniqueInput!): Notification
   notifications(orderBy: [NotificationOrderByInput!], skip: Float, take: Float, where: NotificationWhereInput): [Notification!]!
   rating(where: RatingWhereUniqueInput!): Rating
@@ -449,6 +461,16 @@ input RatingWhereUniqueInput {
   id: String!
 }
 
+input SignupCredentials {
+  email: String!
+  firstName: String!
+  lastLogin: String!
+  lastName: String!
+  password: String!
+  phoneNumber: String!
+  username: String!
+}
+
 enum SortOrder {
   Asc
   Desc
@@ -457,36 +479,72 @@ enum SortOrder {
 type Space {
   advertisments(orderBy: [AdvertismentOrderByInput!], skip: Float, take: Float, where: AdvertismentWhereInput): [Advertisment!]!
   availability: JSON
+  bookingFee: String
   bookings(orderBy: [BookingOrderByInput!], skip: Float, take: Float, where: BookingWhereInput): [Booking!]!
+  country: String
+  county: String
   createdAt: DateTime!
   description: String
   dimensions: String!
+  distanceToGround: String
+  facingRoad: Boolean
+  farthestVisibility: String
   id: String!
+  landmark: String
+  legalDocs: JSON
   location: String
+  maintenanceCharge: String
+  maintenanceInterval: String
+  minListingPeriod: String
   ownerId: String
   photos: JSON
   price: Float
+  pricingPeriod: String
   ratings(orderBy: [RatingOrderByInput!], skip: Float, take: Float, where: RatingWhereInput): [Rating!]!
+  showPriceAs: String
+  spaceContact: String
+  spaceFeatures: JSON
   spaceId: String!
+  spaceRestrictions: String
+  spaceTitle: String
   spaceType: String
   updatedAt: DateTime!
   user: User
+  visibleAtNight: Boolean
 }
 
 input SpaceCreateInput {
   advertisments: AdvertismentCreateNestedManyWithoutSpacesInput
   availability: JSON
+  bookingFee: String
   bookings: BookingCreateNestedManyWithoutSpacesInput
+  country: String
+  county: String
   description: String
   dimensions: String!
+  distanceToGround: String
+  facingRoad: Boolean
+  farthestVisibility: String
+  landmark: String
+  legalDocs: JSON
   location: String
+  maintenanceCharge: String
+  maintenanceInterval: String
+  minListingPeriod: String
   ownerId: String
   photos: JSON
   price: Float
+  pricingPeriod: String
   ratings: RatingCreateNestedManyWithoutSpacesInput
+  showPriceAs: String
+  spaceContact: String
+  spaceFeatures: JSON
   spaceId: String!
+  spaceRestrictions: String
+  spaceTitle: String
   spaceType: String
   user: UserWhereUniqueInput
+  visibleAtNight: Boolean
 }
 
 input SpaceCreateNestedManyWithoutUsersInput {
@@ -501,34 +559,70 @@ input SpaceListRelationFilter {
 
 input SpaceOrderByInput {
   availability: SortOrder
+  bookingFee: SortOrder
+  country: SortOrder
+  county: SortOrder
   createdAt: SortOrder
   description: SortOrder
   dimensions: SortOrder
+  distanceToGround: SortOrder
+  facingRoad: SortOrder
+  farthestVisibility: SortOrder
   id: SortOrder
+  landmark: SortOrder
+  legalDocs: SortOrder
   location: SortOrder
+  maintenanceCharge: SortOrder
+  maintenanceInterval: SortOrder
+  minListingPeriod: SortOrder
   ownerId: SortOrder
   photos: SortOrder
   price: SortOrder
+  pricingPeriod: SortOrder
+  showPriceAs: SortOrder
+  spaceContact: SortOrder
+  spaceFeatures: SortOrder
   spaceId: SortOrder
+  spaceRestrictions: SortOrder
+  spaceTitle: SortOrder
   spaceType: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
+  visibleAtNight: SortOrder
 }
 
 input SpaceUpdateInput {
   advertisments: AdvertismentUpdateManyWithoutSpacesInput
   availability: JSON
+  bookingFee: String
   bookings: BookingUpdateManyWithoutSpacesInput
+  country: String
+  county: String
   description: String
   dimensions: String
+  distanceToGround: String
+  facingRoad: Boolean
+  farthestVisibility: String
+  landmark: String
+  legalDocs: JSON
   location: String
+  maintenanceCharge: String
+  maintenanceInterval: String
+  minListingPeriod: String
   ownerId: String
   photos: JSON
   price: Float
+  pricingPeriod: String
   ratings: RatingUpdateManyWithoutSpacesInput
+  showPriceAs: String
+  spaceContact: String
+  spaceFeatures: JSON
   spaceId: String
+  spaceRestrictions: String
+  spaceTitle: String
   spaceType: String
   user: UserWhereUniqueInput
+  visibleAtNight: Boolean
 }
 
 input SpaceUpdateManyWithoutUsersInput {
@@ -540,17 +634,35 @@ input SpaceUpdateManyWithoutUsersInput {
 input SpaceWhereInput {
   advertisments: AdvertismentListRelationFilter
   availability: JsonFilter
+  bookingFee: StringNullableFilter
   bookings: BookingListRelationFilter
+  country: StringNullableFilter
+  county: StringNullableFilter
   description: StringNullableFilter
   dimensions: StringFilter
+  distanceToGround: StringNullableFilter
+  facingRoad: BooleanNullableFilter
+  farthestVisibility: StringNullableFilter
   id: StringFilter
+  landmark: StringNullableFilter
+  legalDocs: JsonFilter
   location: StringNullableFilter
+  maintenanceCharge: StringNullableFilter
+  maintenanceInterval: StringNullableFilter
+  minListingPeriod: StringNullableFilter
   ownerId: StringNullableFilter
   photos: JsonFilter
   price: FloatNullableFilter
+  pricingPeriod: StringNullableFilter
   ratings: RatingListRelationFilter
+  showPriceAs: StringNullableFilter
+  spaceContact: StringNullableFilter
+  spaceFeatures: JsonFilter
+  spaceRestrictions: StringNullableFilter
+  spaceTitle: StringNullableFilter
   spaceType: StringNullableFilter
   user: UserWhereUniqueInput
+  visibleAtNight: BooleanNullableFilter
 }
 
 input SpaceWhereUniqueInput {
@@ -684,6 +796,7 @@ type User {
   lastLogin: DateTime!
   lastName: String
   notifications(orderBy: [NotificationOrderByInput!], skip: Float, take: Float, where: NotificationWhereInput): [Notification!]!
+  phoneNumber: String!
   ratings(orderBy: [RatingOrderByInput!], skip: Float, take: Float, where: RatingWhereInput): [Rating!]!
   roles: JSON!
   spaces(orderBy: [SpaceOrderByInput!], skip: Float, take: Float, where: SpaceWhereInput): [Space!]!
@@ -701,6 +814,7 @@ input UserCreateInput {
   lastName: String
   notifications: NotificationCreateNestedManyWithoutUsersInput
   password: String!
+  phoneNumber: String!
   ratings: RatingCreateNestedManyWithoutUsersInput
   roles: JSON!
   spaces: SpaceCreateNestedManyWithoutUsersInput
@@ -723,6 +837,7 @@ input UserOrderByInput {
   lastLogin: SortOrder
   lastName: SortOrder
   password: SortOrder
+  phoneNumber: SortOrder
   roles: SortOrder
   updatedAt: SortOrder
   username: SortOrder
@@ -737,6 +852,7 @@ input UserUpdateInput {
   lastName: String
   notifications: NotificationUpdateManyWithoutUsersInput
   password: String
+  phoneNumber: String
   ratings: RatingUpdateManyWithoutUsersInput
   roles: JSON
   spaces: SpaceUpdateManyWithoutUsersInput
@@ -752,6 +868,7 @@ input UserWhereInput {
   id: StringFilter
   lastName: StringNullableFilter
   notifications: NotificationListRelationFilter
+  phoneNumber: StringFilter
   ratings: RatingListRelationFilter
   spaces: SpaceListRelationFilter
   transactions: TransactionListRelationFilter
