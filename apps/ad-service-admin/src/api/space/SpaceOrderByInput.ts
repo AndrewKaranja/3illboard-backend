@@ -17,7 +17,7 @@ export type SpaceOrderByInput = {
   location?: SortOrder;
   maintenanceCharge?: SortOrder;
   maintenanceInterval?: SortOrder;
-  minListingPeriod?: SortOrder;
+  minBookingPeriod?: SortOrder;
   ownerId?: SortOrder;
   photos?: SortOrder;
   price?: SortOrder;

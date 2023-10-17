@@ -35,7 +35,7 @@ export const SpaceShow = (props: ShowProps): React.ReactElement => {
         <TextField label="location" source="location" />
         <TextField label="maintenanceCharge" source="maintenanceCharge" />
         <TextField label="maintenanceInterval" source="maintenanceInterval" />
-        <TextField label="minListingPeriod" source="minListingPeriod" />
+        <TextField label="minBookingPeriod" source="minBookingPeriod" />
         <TextField label="ownerID" source="ownerId" />
         <TextField label="photos" source="photos" />
         <TextField label="price" source="price" />

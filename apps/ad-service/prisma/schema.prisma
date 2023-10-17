@@ -46,7 +46,7 @@ model Space {
   location            String?
   maintenanceCharge   String?
   maintenanceInterval String?
-  minListingPeriod    String?
+  minBookingPeriod    String?
   ownerId             String?
   photos              Json?
   price               Float?

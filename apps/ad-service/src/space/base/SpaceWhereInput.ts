@@ -223,7 +223,7 @@ class SpaceWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  minListingPeriod?: StringNullableFilter;
+  minBookingPeriod?: StringNullableFilter;
 
   @ApiProperty({
     required: false,

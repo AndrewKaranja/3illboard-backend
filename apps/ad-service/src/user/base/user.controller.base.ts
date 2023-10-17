@@ -708,7 +708,7 @@ export class UserControllerBase {
         location: true,
         maintenanceCharge: true,
         maintenanceInterval: true,
-        minListingPeriod: true,
+        minBookingPeriod: true,
         ownerId: true,
         photos: true,
         price: true,

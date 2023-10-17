@@ -23,7 +23,7 @@ export type Space = {
   location: string | null;
   maintenanceCharge: string | null;
   maintenanceInterval: string | null;
-  minListingPeriod: string | null;
+  minBookingPeriod: string | null;
   ownerId: string | null;
   photos: JsonValue;
   price: number | null;
