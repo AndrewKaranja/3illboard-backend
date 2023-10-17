@@ -1,0 +1,763 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Advertisment {
+  adId: String
+  advertiserId: String
+  content: String
+  createdAt: DateTime!
+  duration: String
+  id: String!
+  space: Space
+  updatedAt: DateTime!
+  user: User
+}
+
+input AdvertismentCreateInput {
+  adId: String
+  advertiserId: String
+  content: String
+  duration: String
+  space: SpaceWhereUniqueInput
+  user: UserWhereUniqueInput
+}
+
+input AdvertismentCreateNestedManyWithoutSpacesInput {
+  connect: [AdvertismentWhereUniqueInput!]
+}
+
+input AdvertismentCreateNestedManyWithoutUsersInput {
+  connect: [AdvertismentWhereUniqueInput!]
+}
+
+input AdvertismentListRelationFilter {
+  every: AdvertismentWhereInput
+  none: AdvertismentWhereInput
+  some: AdvertismentWhereInput
+}
+
+input AdvertismentOrderByInput {
+  adId: SortOrder
+  advertiserId: SortOrder
+  content: SortOrder
+  createdAt: SortOrder
+  duration: SortOrder
+  id: SortOrder
+  spaceId: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input AdvertismentUpdateInput {
+  adId: String
+  advertiserId: String
+  content: String
+  duration: String
+  space: SpaceWhereUniqueInput
+  user: UserWhereUniqueInput
+}
+
+input AdvertismentUpdateManyWithoutSpacesInput {
+  connect: [AdvertismentWhereUniqueInput!]
+  disconnect: [AdvertismentWhereUniqueInput!]
+  set: [AdvertismentWhereUniqueInput!]
+}
+
+input AdvertismentUpdateManyWithoutUsersInput {
+  connect: [AdvertismentWhereUniqueInput!]
+  disconnect: [AdvertismentWhereUniqueInput!]
+  set: [AdvertismentWhereUniqueInput!]
+}
+
+input AdvertismentWhereInput {
+  adId: StringNullableFilter
+  advertiserId: StringNullableFilter
+  content: StringNullableFilter
+  duration: StringNullableFilter
+  id: StringFilter
+  space: SpaceWhereUniqueInput
+  user: UserWhereUniqueInput
+}
+
+input AdvertismentWhereUniqueInput {
+  id: String!
+}
+
+type Booking {
+  adId: String
+  advertiserId: String
+  bookingId: String
+  createdAt: DateTime!
+  endDate: DateTime
+  id: String!
+  space: Space
+  startDate: DateTime
+  totalPrice: Float
+  transactions(orderBy: [TransactionOrderByInput!], skip: Float, take: Float, where: TransactionWhereInput): [Transaction!]!
+  updatedAt: DateTime!
+  user: User
+}
+
+input BookingCreateInput {
+  adId: String
+  advertiserId: String
+  bookingId: String
+  endDate: DateTime
+  space: SpaceWhereUniqueInput
+  startDate: DateTime
+  totalPrice: Float
+  transactions: TransactionCreateNestedManyWithoutBookingsInput
+  user: UserWhereUniqueInput
+}
+
+input BookingCreateNestedManyWithoutSpacesInput {
+  connect: [BookingWhereUniqueInput!]
+}
+
+input BookingCreateNestedManyWithoutUsersInput {
+  connect: [BookingWhereUniqueInput!]
+}
+
+input BookingListRelationFilter {
+  every: BookingWhereInput
+  none: BookingWhereInput
+  some: BookingWhereInput
+}
+
+input BookingOrderByInput {
+  adId: SortOrder
+  advertiserId: SortOrder
+  bookingId: SortOrder
+  createdAt: SortOrder
+  endDate: SortOrder
+  id: SortOrder
+  spaceId: SortOrder
+  startDate: SortOrder
+  totalPrice: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input BookingUpdateInput {
+  adId: String
+  advertiserId: String
+  bookingId: String
+  endDate: DateTime
+  space: SpaceWhereUniqueInput
+  startDate: DateTime
+  totalPrice: Float
+  transactions: TransactionUpdateManyWithoutBookingsInput
+  user: UserWhereUniqueInput
+}
+
+input BookingUpdateManyWithoutSpacesInput {
+  connect: [BookingWhereUniqueInput!]
+  disconnect: [BookingWhereUniqueInput!]
+  set: [BookingWhereUniqueInput!]
+}
+
+input BookingUpdateManyWithoutUsersInput {
+  connect: [BookingWhereUniqueInput!]
+  disconnect: [BookingWhereUniqueInput!]
+  set: [BookingWhereUniqueInput!]
+}
+
+input BookingWhereInput {
+  adId: StringNullableFilter
+  advertiserId: StringNullableFilter
+  bookingId: StringNullableFilter
+  endDate: DateTimeNullableFilter
+  id: StringFilter
+  space: SpaceWhereUniqueInput
+  startDate: DateTimeNullableFilter
+  totalPrice: FloatNullableFilter
+  transactions: TransactionListRelationFilter
+  user: UserWhereUniqueInput
+}
+
+input BookingWhereUniqueInput {
+  id: String!
+}
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+enum EnumNotificationStatus {
+  Option_1
+}
+
+enum EnumTransactionStatus {
+  Option_1
+}
+
+input FloatNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: Float
+  notIn: [Float!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+input JsonFilter {
+  equals: JSONObject
+  not: JSONObject
+}
+
+type MetaQueryPayload {
+  count: Float!
+}
+
+type Mutation {
+  createAdvertisment(data: AdvertismentCreateInput!): Advertisment!
+  createBooking(data: BookingCreateInput!): Booking!
+  createNotification(data: NotificationCreateInput!): Notification!
+  createRating(data: RatingCreateInput!): Rating!
+  createSpace(data: SpaceCreateInput!): Space!
+  createTransaction(data: TransactionCreateInput!): Transaction!
+  createUser(data: UserCreateInput!): User!
+  deleteAdvertisment(where: AdvertismentWhereUniqueInput!): Advertisment!
+  deleteBooking(where: BookingWhereUniqueInput!): Booking!
+  deleteNotification(where: NotificationWhereUniqueInput!): Notification!
+  deleteRating(where: RatingWhereUniqueInput!): Rating!
+  deleteSpace(where: SpaceWhereUniqueInput!): Space!
+  deleteTransaction(where: TransactionWhereUniqueInput!): Transaction!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  login(credentials: Credentials!): UserInfo!
+  updateAdvertisment(data: AdvertismentUpdateInput!, where: AdvertismentWhereUniqueInput!): Advertisment!
+  updateBooking(data: BookingUpdateInput!, where: BookingWhereUniqueInput!): Booking!
+  updateNotification(data: NotificationUpdateInput!, where: NotificationWhereUniqueInput!): Notification!
+  updateRating(data: RatingUpdateInput!, where: RatingWhereUniqueInput!): Rating!
+  updateSpace(data: SpaceUpdateInput!, where: SpaceWhereUniqueInput!): Space!
+  updateTransaction(data: TransactionUpdateInput!, where: TransactionWhereUniqueInput!): Transaction!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type Notification {
+  content: String
+  createdAt: DateTime!
+  date: DateTime
+  id: String!
+  status: EnumNotificationStatus
+  updatedAt: DateTime!
+  user: User
+}
+
+input NotificationCreateInput {
+  content: String
+  date: DateTime
+  status: EnumNotificationStatus
+  user: UserWhereUniqueInput
+}
+
+input NotificationCreateNestedManyWithoutUsersInput {
+  connect: [NotificationWhereUniqueInput!]
+}
+
+input NotificationListRelationFilter {
+  every: NotificationWhereInput
+  none: NotificationWhereInput
+  some: NotificationWhereInput
+}
+
+input NotificationOrderByInput {
+  content: SortOrder
+  createdAt: SortOrder
+  date: SortOrder
+  id: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input NotificationUpdateInput {
+  content: String
+  date: DateTime
+  status: EnumNotificationStatus
+  user: UserWhereUniqueInput
+}
+
+input NotificationUpdateManyWithoutUsersInput {
+  connect: [NotificationWhereUniqueInput!]
+  disconnect: [NotificationWhereUniqueInput!]
+  set: [NotificationWhereUniqueInput!]
+}
+
+input NotificationWhereInput {
+  content: StringNullableFilter
+  date: DateTimeNullableFilter
+  id: StringFilter
+  status: EnumNotificationStatus
+  user: UserWhereUniqueInput
+}
+
+input NotificationWhereUniqueInput {
+  id: String!
+}
+
+type Query {
+  _advertismentsMeta(where: AdvertismentWhereInput): MetaQueryPayload!
+  _bookingsMeta(where: BookingWhereInput): MetaQueryPayload!
+  _notificationsMeta(where: NotificationWhereInput): MetaQueryPayload!
+  _ratingsMeta(where: RatingWhereInput): MetaQueryPayload!
+  _spacesMeta(where: SpaceWhereInput): MetaQueryPayload!
+  _transactionsMeta(where: TransactionWhereInput): MetaQueryPayload!
+  _usersMeta(where: UserWhereInput): MetaQueryPayload!
+  advertisment(where: AdvertismentWhereUniqueInput!): Advertisment
+  advertisments(orderBy: [AdvertismentOrderByInput!], skip: Float, take: Float, where: AdvertismentWhereInput): [Advertisment!]!
+  booking(where: BookingWhereUniqueInput!): Booking
+  bookings(orderBy: [BookingOrderByInput!], skip: Float, take: Float, where: BookingWhereInput): [Booking!]!
+  notification(where: NotificationWhereUniqueInput!): Notification
+  notifications(orderBy: [NotificationOrderByInput!], skip: Float, take: Float, where: NotificationWhereInput): [Notification!]!
+  rating(where: RatingWhereUniqueInput!): Rating
+  ratings(orderBy: [RatingOrderByInput!], skip: Float, take: Float, where: RatingWhereInput): [Rating!]!
+  space(where: SpaceWhereUniqueInput!): Space
+  spaces(orderBy: [SpaceOrderByInput!], skip: Float, take: Float, where: SpaceWhereInput): [Space!]!
+  transaction(where: TransactionWhereUniqueInput!): Transaction
+  transactions(orderBy: [TransactionOrderByInput!], skip: Float, take: Float, where: TransactionWhereInput): [Transaction!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+type Rating {
+  advertiserId: String
+  comment: String
+  createdAt: DateTime!
+  id: String!
+  rating: Float
+  reviewId: String
+  space: Space
+  updatedAt: DateTime!
+  user: User
+}
+
+input RatingCreateInput {
+  advertiserId: String
+  comment: String
+  rating: Float
+  reviewId: String
+  space: SpaceWhereUniqueInput
+  user: UserWhereUniqueInput
+}
+
+input RatingCreateNestedManyWithoutSpacesInput {
+  connect: [RatingWhereUniqueInput!]
+}
+
+input RatingCreateNestedManyWithoutUsersInput {
+  connect: [RatingWhereUniqueInput!]
+}
+
+input RatingListRelationFilter {
+  every: RatingWhereInput
+  none: RatingWhereInput
+  some: RatingWhereInput
+}
+
+input RatingOrderByInput {
+  advertiserId: SortOrder
+  comment: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  rating: SortOrder
+  reviewId: SortOrder
+  spaceId: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input RatingUpdateInput {
+  advertiserId: String
+  comment: String
+  rating: Float
+  reviewId: String
+  space: SpaceWhereUniqueInput
+  user: UserWhereUniqueInput
+}
+
+input RatingUpdateManyWithoutSpacesInput {
+  connect: [RatingWhereUniqueInput!]
+  disconnect: [RatingWhereUniqueInput!]
+  set: [RatingWhereUniqueInput!]
+}
+
+input RatingUpdateManyWithoutUsersInput {
+  connect: [RatingWhereUniqueInput!]
+  disconnect: [RatingWhereUniqueInput!]
+  set: [RatingWhereUniqueInput!]
+}
+
+input RatingWhereInput {
+  advertiserId: StringNullableFilter
+  comment: StringNullableFilter
+  id: StringFilter
+  rating: IntNullableFilter
+  reviewId: StringNullableFilter
+  space: SpaceWhereUniqueInput
+  user: UserWhereUniqueInput
+}
+
+input RatingWhereUniqueInput {
+  id: String!
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+type Space {
+  advertisments(orderBy: [AdvertismentOrderByInput!], skip: Float, take: Float, where: AdvertismentWhereInput): [Advertisment!]!
+  availability: JSON
+  bookings(orderBy: [BookingOrderByInput!], skip: Float, take: Float, where: BookingWhereInput): [Booking!]!
+  createdAt: DateTime!
+  description: String
+  dimensions: String!
+  id: String!
+  location: String
+  ownerId: String
+  photos: JSON
+  price: Float
+  ratings(orderBy: [RatingOrderByInput!], skip: Float, take: Float, where: RatingWhereInput): [Rating!]!
+  spaceId: String!
+  spaceType: String
+  updatedAt: DateTime!
+  user: User
+}
+
+input SpaceCreateInput {
+  advertisments: AdvertismentCreateNestedManyWithoutSpacesInput
+  availability: JSON
+  bookings: BookingCreateNestedManyWithoutSpacesInput
+  description: String
+  dimensions: String!
+  location: String
+  ownerId: String
+  photos: JSON
+  price: Float
+  ratings: RatingCreateNestedManyWithoutSpacesInput
+  spaceId: String!
+  spaceType: String
+  user: UserWhereUniqueInput
+}
+
+input SpaceCreateNestedManyWithoutUsersInput {
+  connect: [SpaceWhereUniqueInput!]
+}
+
+input SpaceListRelationFilter {
+  every: SpaceWhereInput
+  none: SpaceWhereInput
+  some: SpaceWhereInput
+}
+
+input SpaceOrderByInput {
+  availability: SortOrder
+  createdAt: SortOrder
+  description: SortOrder
+  dimensions: SortOrder
+  id: SortOrder
+  location: SortOrder
+  ownerId: SortOrder
+  photos: SortOrder
+  price: SortOrder
+  spaceId: SortOrder
+  spaceType: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input SpaceUpdateInput {
+  advertisments: AdvertismentUpdateManyWithoutSpacesInput
+  availability: JSON
+  bookings: BookingUpdateManyWithoutSpacesInput
+  description: String
+  dimensions: String
+  location: String
+  ownerId: String
+  photos: JSON
+  price: Float
+  ratings: RatingUpdateManyWithoutSpacesInput
+  spaceId: String
+  spaceType: String
+  user: UserWhereUniqueInput
+}
+
+input SpaceUpdateManyWithoutUsersInput {
+  connect: [SpaceWhereUniqueInput!]
+  disconnect: [SpaceWhereUniqueInput!]
+  set: [SpaceWhereUniqueInput!]
+}
+
+input SpaceWhereInput {
+  advertisments: AdvertismentListRelationFilter
+  availability: JsonFilter
+  bookings: BookingListRelationFilter
+  description: StringNullableFilter
+  dimensions: StringFilter
+  id: StringFilter
+  location: StringNullableFilter
+  ownerId: StringNullableFilter
+  photos: JsonFilter
+  price: FloatNullableFilter
+  ratings: RatingListRelationFilter
+  spaceType: StringNullableFilter
+  user: UserWhereUniqueInput
+}
+
+input SpaceWhereUniqueInput {
+  id: String!
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type Transaction {
+  advertiserId: String
+  amount: String
+  booking: Booking
+  createdAt: DateTime!
+  id: String!
+  status: EnumTransactionStatus
+  transactionDate: DateTime
+  transactionId: String
+  updatedAt: DateTime!
+  user: User
+}
+
+input TransactionCreateInput {
+  advertiserId: String
+  amount: String
+  booking: BookingWhereUniqueInput
+  status: EnumTransactionStatus
+  transactionDate: DateTime
+  transactionId: String
+  user: UserWhereUniqueInput
+}
+
+input TransactionCreateNestedManyWithoutBookingsInput {
+  connect: [TransactionWhereUniqueInput!]
+}
+
+input TransactionCreateNestedManyWithoutUsersInput {
+  connect: [TransactionWhereUniqueInput!]
+}
+
+input TransactionListRelationFilter {
+  every: TransactionWhereInput
+  none: TransactionWhereInput
+  some: TransactionWhereInput
+}
+
+input TransactionOrderByInput {
+  advertiserId: SortOrder
+  amount: SortOrder
+  bookingId: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  status: SortOrder
+  transactionDate: SortOrder
+  transactionId: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input TransactionUpdateInput {
+  advertiserId: String
+  amount: String
+  booking: BookingWhereUniqueInput
+  status: EnumTransactionStatus
+  transactionDate: DateTime
+  transactionId: String
+  user: UserWhereUniqueInput
+}
+
+input TransactionUpdateManyWithoutBookingsInput {
+  connect: [TransactionWhereUniqueInput!]
+  disconnect: [TransactionWhereUniqueInput!]
+  set: [TransactionWhereUniqueInput!]
+}
+
+input TransactionUpdateManyWithoutUsersInput {
+  connect: [TransactionWhereUniqueInput!]
+  disconnect: [TransactionWhereUniqueInput!]
+  set: [TransactionWhereUniqueInput!]
+}
+
+input TransactionWhereInput {
+  advertiserId: StringNullableFilter
+  amount: StringNullableFilter
+  booking: BookingWhereUniqueInput
+  id: StringFilter
+  status: EnumTransactionStatus
+  transactionDate: DateTimeNullableFilter
+  transactionId: StringNullableFilter
+  user: UserWhereUniqueInput
+}
+
+input TransactionWhereUniqueInput {
+  id: String!
+}
+
+type User {
+  advertisments(orderBy: [AdvertismentOrderByInput!], skip: Float, take: Float, where: AdvertismentWhereInput): [Advertisment!]!
+  bookings(orderBy: [BookingOrderByInput!], skip: Float, take: Float, where: BookingWhereInput): [Booking!]!
+  createdAt: DateTime!
+  email: String!
+  firstName: String
+  id: String!
+  lastLogin: DateTime!
+  lastName: String
+  notifications(orderBy: [NotificationOrderByInput!], skip: Float, take: Float, where: NotificationWhereInput): [Notification!]!
+  ratings(orderBy: [RatingOrderByInput!], skip: Float, take: Float, where: RatingWhereInput): [Rating!]!
+  roles: JSON!
+  spaces(orderBy: [SpaceOrderByInput!], skip: Float, take: Float, where: SpaceWhereInput): [Space!]!
+  transactions(orderBy: [TransactionOrderByInput!], skip: Float, take: Float, where: TransactionWhereInput): [Transaction!]!
+  updatedAt: DateTime!
+  username: String!
+}
+
+input UserCreateInput {
+  advertisments: AdvertismentCreateNestedManyWithoutUsersInput
+  bookings: BookingCreateNestedManyWithoutUsersInput
+  email: String!
+  firstName: String
+  lastLogin: DateTime!
+  lastName: String
+  notifications: NotificationCreateNestedManyWithoutUsersInput
+  password: String!
+  ratings: RatingCreateNestedManyWithoutUsersInput
+  roles: JSON!
+  spaces: SpaceCreateNestedManyWithoutUsersInput
+  transactions: TransactionCreateNestedManyWithoutUsersInput
+  username: String!
+}
+
+type UserInfo {
+  accessToken: String
+  id: String!
+  roles: [String!]!
+  username: String!
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  email: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastLogin: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  roles: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  advertisments: AdvertismentUpdateManyWithoutUsersInput
+  bookings: BookingUpdateManyWithoutUsersInput
+  email: String
+  firstName: String
+  lastLogin: DateTime
+  lastName: String
+  notifications: NotificationUpdateManyWithoutUsersInput
+  password: String
+  ratings: RatingUpdateManyWithoutUsersInput
+  roles: JSON
+  spaces: SpaceUpdateManyWithoutUsersInput
+  transactions: TransactionUpdateManyWithoutUsersInput
+  username: String
+}
+
+input UserWhereInput {
+  advertisments: AdvertismentListRelationFilter
+  bookings: BookingListRelationFilter
+  email: StringFilter
+  firstName: StringNullableFilter
+  id: StringFilter
+  lastName: StringNullableFilter
+  notifications: NotificationListRelationFilter
+  ratings: RatingListRelationFilter
+  spaces: SpaceListRelationFilter
+  transactions: TransactionListRelationFilter
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}
