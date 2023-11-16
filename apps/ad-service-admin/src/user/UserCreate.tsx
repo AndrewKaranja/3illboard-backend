@@ -39,8 +39,10 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={BookingTitle} />
         </ReferenceArrayInput>
+        <TextInput label="country" source="country" />
         <TextInput label="email" source="email" type="email" />
         <TextInput label="First Name" source="firstName" />
+        <TextInput label="KRA Pin" source="kraPin" />
         <DateTimeInput label="Last Login" source="lastLogin" />
         <TextInput label="Last Name" source="lastName" />
         <ReferenceArrayInput
@@ -75,6 +77,7 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={SpaceTitle} />
         </ReferenceArrayInput>
+        <TextInput label="status" source="status" />
         <ReferenceArrayInput
           source="transactions"
           reference="Transaction"

@@ -58,6 +58,17 @@ class UserUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  country?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   email?: string;
 
   @ApiProperty({
@@ -70,6 +81,17 @@ class UserUpdateInput {
     nullable: true,
   })
   firstName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  kraPin?: string | null;
 
   @ApiProperty({
     required: false,
@@ -160,6 +182,17 @@ class UserUpdateInput {
     nullable: true,
   })
   spaces?: SpaceUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  status?: string | null;
 
   @ApiProperty({
     required: false,

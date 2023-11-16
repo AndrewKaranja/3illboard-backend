@@ -9,8 +9,10 @@ import { TransactionUpdateManyWithoutUsersInput } from "./TransactionUpdateManyW
 export type UserUpdateInput = {
   advertisments?: AdvertismentUpdateManyWithoutUsersInput;
   bookings?: BookingUpdateManyWithoutUsersInput;
+  country?: string | null;
   email?: string;
   firstName?: string | null;
+  kraPin?: string | null;
   lastLogin?: Date;
   lastName?: string | null;
   notifications?: NotificationUpdateManyWithoutUsersInput;
@@ -19,6 +21,7 @@ export type UserUpdateInput = {
   ratings?: RatingUpdateManyWithoutUsersInput;
   roles?: InputJsonValue;
   spaces?: SpaceUpdateManyWithoutUsersInput;
+  status?: string | null;
   transactions?: TransactionUpdateManyWithoutUsersInput;
   username?: string;
 };
