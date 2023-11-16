@@ -50,6 +50,17 @@ class UserCreateInput {
   bookings?: BookingCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  country?: string | null;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
@@ -67,6 +78,17 @@ class UserCreateInput {
     nullable: true,
   })
   firstName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  kraPin?: string | null;
 
   @ApiProperty({
     required: true,
@@ -148,6 +170,17 @@ class UserCreateInput {
     nullable: true,
   })
   spaces?: SpaceCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  status?: string | null;
 
   @ApiProperty({
     required: false,

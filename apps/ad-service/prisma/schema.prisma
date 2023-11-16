@@ -10,10 +10,12 @@ generator client {
 model User {
   advertisments Advertisment[]
   bookings      Booking[]
+  country       String?
   createdAt     DateTime       @default(now())
   email         String         @unique
   firstName     String?
   id            String         @id @default(auto()) @map("_id") @db.ObjectId
+  kraPin        String?
   lastLogin     DateTime
   lastName      String?
   notifications Notification[]
@@ -22,6 +24,7 @@ model User {
   ratings       Rating[]
   roles         Json
   spaces        Space[]
+  status        String?
   transactions  Transaction[]
   updatedAt     DateTime       @updatedAt
   username      String         @unique

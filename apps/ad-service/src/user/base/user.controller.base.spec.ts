@@ -6,7 +6,6 @@ import {
   CallHandler,
 } from "@nestjs/common";
 import request from "supertest";
-import { MorganModule } from "nest-morgan";
 import { ACGuard } from "nest-access-control";
 import { DefaultAuthGuard } from "../../auth/defaultAuth.guard";
 import { ACLModule } from "../../auth/acl.module";
@@ -19,52 +18,64 @@ import { UserService } from "../user.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
+  country: "exampleCountry",
   createdAt: new Date(),
   email: "exampleEmail",
   firstName: "exampleFirstName",
   id: "exampleId",
+  kraPin: "exampleKraPin",
   lastLogin: new Date(),
   lastName: "exampleLastName",
   password: "examplePassword",
   phoneNumber: "examplePhoneNumber",
+  status: "exampleStatus",
   updatedAt: new Date(),
   username: "exampleUsername",
 };
 const CREATE_RESULT = {
+  country: "exampleCountry",
   createdAt: new Date(),
   email: "exampleEmail",
   firstName: "exampleFirstName",
   id: "exampleId",
+  kraPin: "exampleKraPin",
   lastLogin: new Date(),
   lastName: "exampleLastName",
   password: "examplePassword",
   phoneNumber: "examplePhoneNumber",
+  status: "exampleStatus",
   updatedAt: new Date(),
   username: "exampleUsername",
 };
 const FIND_MANY_RESULT = [
   {
+    country: "exampleCountry",
     createdAt: new Date(),
     email: "exampleEmail",
     firstName: "exampleFirstName",
     id: "exampleId",
+    kraPin: "exampleKraPin",
     lastLogin: new Date(),
     lastName: "exampleLastName",
     password: "examplePassword",
     phoneNumber: "examplePhoneNumber",
+    status: "exampleStatus",
     updatedAt: new Date(),
     username: "exampleUsername",
   },
 ];
 const FIND_ONE_RESULT = {
+  country: "exampleCountry",
   createdAt: new Date(),
   email: "exampleEmail",
   firstName: "exampleFirstName",
   id: "exampleId",
+  kraPin: "exampleKraPin",
   lastLogin: new Date(),
   lastName: "exampleLastName",
   password: "examplePassword",
   phoneNumber: "examplePhoneNumber",
+  status: "exampleStatus",
   updatedAt: new Date(),
   username: "exampleUsername",
 };
@@ -128,7 +139,7 @@ describe("User", () => {
         },
       ],
       controllers: [UserController],
-      imports: [MorganModule.forRoot(), ACLModule],
+      imports: [ACLModule],
     })
       .overrideGuard(DefaultAuthGuard)
       .useValue(basicAuthGuard)

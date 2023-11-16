@@ -15,8 +15,8 @@ import { AdvertismentListRelationFilter } from "../../advertisment/base/Advertis
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { BookingListRelationFilter } from "../../booking/base/BookingListRelationFilter";
-import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { StringFilter } from "../../util/StringFilter";
 import { NotificationListRelationFilter } from "../../notification/base/NotificationListRelationFilter";
 import { RatingListRelationFilter } from "../../rating/base/RatingListRelationFilter";
 import { SpaceListRelationFilter } from "../../space/base/SpaceListRelationFilter";
@@ -50,6 +50,17 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  country?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: StringFilter,
   })
   @Type(() => StringFilter)
@@ -80,6 +91,17 @@ class UserWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  kraPin?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -138,6 +160,17 @@ class UserWhereInput {
     nullable: true,
   })
   spaces?: SpaceListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  status?: StringNullableFilter;
 
   @ApiProperty({
     required: false,

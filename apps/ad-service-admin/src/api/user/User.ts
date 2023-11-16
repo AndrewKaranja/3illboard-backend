@@ -9,10 +9,12 @@ import { Transaction } from "../transaction/Transaction";
 export type User = {
   advertisments?: Array<Advertisment>;
   bookings?: Array<Booking>;
+  country: string | null;
   createdAt: Date;
   email: string;
   firstName: string | null;
   id: string;
+  kraPin: string | null;
   lastLogin: Date;
   lastName: string | null;
   notifications?: Array<Notification>;
@@ -20,6 +22,7 @@ export type User = {
   ratings?: Array<Rating>;
   roles: JsonValue;
   spaces?: Array<Space>;
+  status: string | null;
   transactions?: Array<Transaction>;
   updatedAt: Date;
   username: string;

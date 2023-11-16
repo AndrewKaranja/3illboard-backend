@@ -9,8 +9,10 @@ import { TransactionCreateNestedManyWithoutUsersInput } from "./TransactionCreat
 export type UserCreateInput = {
   advertisments?: AdvertismentCreateNestedManyWithoutUsersInput;
   bookings?: BookingCreateNestedManyWithoutUsersInput;
+  country?: string | null;
   email: string;
   firstName?: string | null;
+  kraPin?: string | null;
   lastLogin: Date;
   lastName?: string | null;
   notifications?: NotificationCreateNestedManyWithoutUsersInput;
@@ -19,6 +21,7 @@ export type UserCreateInput = {
   ratings?: RatingCreateNestedManyWithoutUsersInput;
   roles: InputJsonValue;
   spaces?: SpaceCreateNestedManyWithoutUsersInput;
+  status?: string | null;
   transactions?: TransactionCreateNestedManyWithoutUsersInput;
   username: string;
 };
