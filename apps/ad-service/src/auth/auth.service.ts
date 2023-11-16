@@ -23,9 +23,9 @@ export class AuthService {
       where: { username },
     });
     if (user && (await this.passwordService.compare(password, user.password))) {
-      const { id, roles } = user;
+      const { id, roles,firstName,lastName,lastLogin,phoneNumber,email} = user;
       const roleList = roles as string[];
-      return { id, username, roles: roleList };
+      return { id, username, roles: roleList,firstName,lastName,lastLogin,phoneNumber,email };
     }
     return null;
   }
@@ -46,6 +46,13 @@ export class AuthService {
     return {
       accessToken,
       ...user,
+      username: user.username,
+      email:user.email,
+      id: user.id,
+      firstName:user.firstName,
+      lastName:user.lastName,
+      phoneNumber:user.phoneNumber,
+      lastLogin:user.lastLogin
     };
   }
 
@@ -82,8 +89,13 @@ export class AuthService {
     return {
       accessToken,
       username: user.username,
+      email:user.email,
       id: user.id,
       roles: (user.roles as {roles: string[]}).roles,
+      firstName:user.firstName,
+      lastName:user.lastName,
+      phoneNumber:user.phoneNumber,
+      lastLogin:user.lastLogin
     };
   }
 

@@ -495,7 +495,7 @@ type Space {
   location: String
   maintenanceCharge: String
   maintenanceInterval: String
-  minListingPeriod: String
+  minBookingPeriod: String
   ownerId: String
   photos: JSON
   price: Float
@@ -511,20 +511,6 @@ type Space {
   updatedAt: DateTime!
   user: User
   visibleAtNight: Boolean
-  bookings(orderBy: [BookingOrderByInput!], skip: Float, take: Float, where: BookingWhereInput): [Booking!]!
-  createdAt: DateTime!
-  description: String
-  dimensions: String!
-  id: String!
-  location: String
-  ownerId: String
-  photos: JSON
-  price: Float
-  ratings(orderBy: [RatingOrderByInput!], skip: Float, take: Float, where: RatingWhereInput): [Rating!]!
-  spaceId: String!
-  spaceType: String
-  updatedAt: DateTime!
-  user: User
 }
 
 input SpaceCreateInput {
@@ -544,7 +530,7 @@ input SpaceCreateInput {
   location: String
   maintenanceCharge: String
   maintenanceInterval: String
-  minListingPeriod: String
+  minBookingPeriod: String
   ownerId: String
   photos: JSON
   price: Float
@@ -559,17 +545,6 @@ input SpaceCreateInput {
   spaceType: String
   user: UserWhereUniqueInput
   visibleAtNight: Boolean
-  bookings: BookingCreateNestedManyWithoutSpacesInput
-  description: String
-  dimensions: String!
-  location: String
-  ownerId: String
-  photos: JSON
-  price: Float
-  ratings: RatingCreateNestedManyWithoutSpacesInput
-  spaceId: String!
-  spaceType: String
-  user: UserWhereUniqueInput
 }
 
 input SpaceCreateNestedManyWithoutUsersInput {
@@ -599,7 +574,7 @@ input SpaceOrderByInput {
   location: SortOrder
   maintenanceCharge: SortOrder
   maintenanceInterval: SortOrder
-  minListingPeriod: SortOrder
+  minBookingPeriod: SortOrder
   ownerId: SortOrder
   photos: SortOrder
   price: SortOrder
@@ -614,18 +589,6 @@ input SpaceOrderByInput {
   updatedAt: SortOrder
   userId: SortOrder
   visibleAtNight: SortOrder
-  createdAt: SortOrder
-  description: SortOrder
-  dimensions: SortOrder
-  id: SortOrder
-  location: SortOrder
-  ownerId: SortOrder
-  photos: SortOrder
-  price: SortOrder
-  spaceId: SortOrder
-  spaceType: SortOrder
-  updatedAt: SortOrder
-  userId: SortOrder
 }
 
 input SpaceUpdateInput {
@@ -645,7 +608,7 @@ input SpaceUpdateInput {
   location: String
   maintenanceCharge: String
   maintenanceInterval: String
-  minListingPeriod: String
+  minBookingPeriod: String
   ownerId: String
   photos: JSON
   price: Float
@@ -660,17 +623,6 @@ input SpaceUpdateInput {
   spaceType: String
   user: UserWhereUniqueInput
   visibleAtNight: Boolean
-  bookings: BookingUpdateManyWithoutSpacesInput
-  description: String
-  dimensions: String
-  location: String
-  ownerId: String
-  photos: JSON
-  price: Float
-  ratings: RatingUpdateManyWithoutSpacesInput
-  spaceId: String
-  spaceType: String
-  user: UserWhereUniqueInput
 }
 
 input SpaceUpdateManyWithoutUsersInput {
@@ -697,7 +649,7 @@ input SpaceWhereInput {
   location: StringNullableFilter
   maintenanceCharge: StringNullableFilter
   maintenanceInterval: StringNullableFilter
-  minListingPeriod: StringNullableFilter
+  minBookingPeriod: StringNullableFilter
   ownerId: StringNullableFilter
   photos: JsonFilter
   price: FloatNullableFilter
@@ -711,17 +663,6 @@ input SpaceWhereInput {
   spaceType: StringNullableFilter
   user: UserWhereUniqueInput
   visibleAtNight: BooleanNullableFilter
-  bookings: BookingListRelationFilter
-  description: StringNullableFilter
-  dimensions: StringFilter
-  id: StringFilter
-  location: StringNullableFilter
-  ownerId: StringNullableFilter
-  photos: JsonFilter
-  price: FloatNullableFilter
-  ratings: RatingListRelationFilter
-  spaceType: StringNullableFilter
-  user: UserWhereUniqueInput
 }
 
 input SpaceWhereUniqueInput {
@@ -855,7 +796,7 @@ type User {
   lastLogin: DateTime!
   lastName: String
   notifications(orderBy: [NotificationOrderByInput!], skip: Float, take: Float, where: NotificationWhereInput): [Notification!]!
-  phoneNumber: String!
+  phoneNumber: String
   ratings(orderBy: [RatingOrderByInput!], skip: Float, take: Float, where: RatingWhereInput): [Rating!]!
   roles: JSON!
   spaces(orderBy: [SpaceOrderByInput!], skip: Float, take: Float, where: SpaceWhereInput): [Space!]!
@@ -873,7 +814,7 @@ input UserCreateInput {
   lastName: String
   notifications: NotificationCreateNestedManyWithoutUsersInput
   password: String!
-  phoneNumber: String!
+  phoneNumber: String
   ratings: RatingCreateNestedManyWithoutUsersInput
   roles: JSON!
   spaces: SpaceCreateNestedManyWithoutUsersInput
@@ -883,7 +824,12 @@ input UserCreateInput {
 
 type UserInfo {
   accessToken: String
+  email: String!
+  firstName: String!
   id: String!
+  lastLogin: String!
+  lastName: String!
+  phoneNumber: String!
   roles: [String!]!
   username: String!
 }
@@ -927,7 +873,7 @@ input UserWhereInput {
   id: StringFilter
   lastName: StringNullableFilter
   notifications: NotificationListRelationFilter
-  phoneNumber: StringFilter
+  phoneNumber: StringNullableFilter
   ratings: RatingListRelationFilter
   spaces: SpaceListRelationFilter
   transactions: TransactionListRelationFilter
