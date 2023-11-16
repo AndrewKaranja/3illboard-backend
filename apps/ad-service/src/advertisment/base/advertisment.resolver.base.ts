@@ -19,6 +19,7 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { CreateAdvertismentArgs } from "./CreateAdvertismentArgs";
 import { UpdateAdvertismentArgs } from "./UpdateAdvertismentArgs";
 import { DeleteAdvertismentArgs } from "./DeleteAdvertismentArgs";
@@ -172,15 +173,10 @@ export class AdvertismentResolverBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => Space, {
     nullable: true,
     name: "space",
-  })
-  @nestAccessControl.UseRoles({
-    resource: "Space",
-    action: "read",
-    possession: "any",
   })
   async resolveFieldSpace(
     @graphql.Parent() parent: Advertisment
