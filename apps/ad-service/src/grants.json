@@ -182,42 +182,6 @@
   {
     "role": "admin",
     "resource": "Space",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Space",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "guest",
-    "resource": "Space",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "advertiser",
-    "resource": "Space",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "support",
-    "resource": "Space",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "spaceOwner",
-    "resource": "Space",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Space",
     "action": "create:any",
     "attributes": "*"
   },

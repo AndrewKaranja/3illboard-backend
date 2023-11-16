@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { CreateSpaceArgs } from "./CreateSpaceArgs";
 import { UpdateSpaceArgs } from "./UpdateSpaceArgs";
@@ -68,13 +69,8 @@ export class SpaceResolverBase {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => Space, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Space",
-    action: "read",
-    possession: "own",
-  })
   async space(
     @graphql.Args() args: SpaceFindUniqueArgs
   ): Promise<Space | null> {

@@ -19,6 +19,7 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { CreateRatingArgs } from "./CreateRatingArgs";
 import { UpdateRatingArgs } from "./UpdateRatingArgs";
 import { DeleteRatingArgs } from "./DeleteRatingArgs";
@@ -168,15 +169,10 @@ export class RatingResolverBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => Space, {
     nullable: true,
     name: "space",
-  })
-  @nestAccessControl.UseRoles({
-    resource: "Space",
-    action: "read",
-    possession: "any",
   })
   async resolveFieldSpace(
     @graphql.Parent() parent: Rating
