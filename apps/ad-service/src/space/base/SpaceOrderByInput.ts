@@ -50,6 +50,17 @@ class SpaceOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  bookingStage?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   country?: SortOrder;
 
   @ApiProperty({
@@ -139,6 +150,17 @@ class SpaceOrderByInput {
     nullable: true,
   })
   id?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  isOccupied?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -326,6 +348,17 @@ class SpaceOrderByInput {
     nullable: true,
   })
   spaceType?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  status?: SortOrder;
 
   @ApiProperty({
     required: false,

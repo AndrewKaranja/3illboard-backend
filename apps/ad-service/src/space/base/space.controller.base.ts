@@ -70,6 +70,7 @@ export class SpaceControllerBase {
       select: {
         availability: true,
         bookingFee: true,
+        bookingStage: true,
         country: true,
         county: true,
         createdAt: true,
@@ -79,6 +80,7 @@ export class SpaceControllerBase {
         facingRoad: true,
         farthestVisibility: true,
         id: true,
+        isOccupied: true,
         landmark: true,
         legalDocs: true,
         location: true,
@@ -96,6 +98,7 @@ export class SpaceControllerBase {
         spaceRestrictions: true,
         spaceTitle: true,
         spaceType: true,
+        status: true,
         updatedAt: true,
 
         user: {
@@ -128,6 +131,7 @@ export class SpaceControllerBase {
       select: {
         availability: true,
         bookingFee: true,
+        bookingStage: true,
         country: true,
         county: true,
         createdAt: true,
@@ -137,6 +141,7 @@ export class SpaceControllerBase {
         facingRoad: true,
         farthestVisibility: true,
         id: true,
+        isOccupied: true,
         landmark: true,
         legalDocs: true,
         location: true,
@@ -154,6 +159,7 @@ export class SpaceControllerBase {
         spaceRestrictions: true,
         spaceTitle: true,
         spaceType: true,
+        status: true,
         updatedAt: true,
 
         user: {
@@ -182,6 +188,7 @@ export class SpaceControllerBase {
       select: {
         availability: true,
         bookingFee: true,
+        bookingStage: true,
         country: true,
         county: true,
         createdAt: true,
@@ -191,6 +198,7 @@ export class SpaceControllerBase {
         facingRoad: true,
         farthestVisibility: true,
         id: true,
+        isOccupied: true,
         landmark: true,
         legalDocs: true,
         location: true,
@@ -208,6 +216,7 @@ export class SpaceControllerBase {
         spaceRestrictions: true,
         spaceTitle: true,
         spaceType: true,
+        status: true,
         updatedAt: true,
 
         user: {
@@ -258,6 +267,7 @@ export class SpaceControllerBase {
         select: {
           availability: true,
           bookingFee: true,
+          bookingStage: true,
           country: true,
           county: true,
           createdAt: true,
@@ -267,6 +277,7 @@ export class SpaceControllerBase {
           facingRoad: true,
           farthestVisibility: true,
           id: true,
+          isOccupied: true,
           landmark: true,
           legalDocs: true,
           location: true,
@@ -284,6 +295,7 @@ export class SpaceControllerBase {
           spaceRestrictions: true,
           spaceTitle: true,
           spaceType: true,
+          status: true,
           updatedAt: true,
 
           user: {
@@ -325,6 +337,7 @@ export class SpaceControllerBase {
         select: {
           availability: true,
           bookingFee: true,
+          bookingStage: true,
           country: true,
           county: true,
           createdAt: true,
@@ -334,6 +347,7 @@ export class SpaceControllerBase {
           facingRoad: true,
           farthestVisibility: true,
           id: true,
+          isOccupied: true,
           landmark: true,
           legalDocs: true,
           location: true,
@@ -351,6 +365,7 @@ export class SpaceControllerBase {
           spaceRestrictions: true,
           spaceTitle: true,
           spaceType: true,
+          status: true,
           updatedAt: true,
 
           user: {

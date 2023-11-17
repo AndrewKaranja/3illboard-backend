@@ -19,6 +19,7 @@ const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
   bookingFee: "exampleBookingFee",
+  bookingStage: "exampleBookingStage",
   country: "exampleCountry",
   county: "exampleCounty",
   createdAt: new Date(),
@@ -28,6 +29,7 @@ const CREATE_INPUT = {
   facingRoad: "true",
   farthestVisibility: "exampleFarthestVisibility",
   id: "exampleId",
+  isOccupied: "true",
   landmark: "exampleLandmark",
   location: "exampleLocation",
   maintenanceCharge: "exampleMaintenanceCharge",
@@ -42,11 +44,13 @@ const CREATE_INPUT = {
   spaceRestrictions: "exampleSpaceRestrictions",
   spaceTitle: "exampleSpaceTitle",
   spaceType: "exampleSpaceType",
+  status: "exampleStatus",
   updatedAt: new Date(),
   visibleAtNight: "true",
 };
 const CREATE_RESULT = {
   bookingFee: "exampleBookingFee",
+  bookingStage: "exampleBookingStage",
   country: "exampleCountry",
   county: "exampleCounty",
   createdAt: new Date(),
@@ -56,6 +60,7 @@ const CREATE_RESULT = {
   facingRoad: "true",
   farthestVisibility: "exampleFarthestVisibility",
   id: "exampleId",
+  isOccupied: "true",
   landmark: "exampleLandmark",
   location: "exampleLocation",
   maintenanceCharge: "exampleMaintenanceCharge",
@@ -70,12 +75,14 @@ const CREATE_RESULT = {
   spaceRestrictions: "exampleSpaceRestrictions",
   spaceTitle: "exampleSpaceTitle",
   spaceType: "exampleSpaceType",
+  status: "exampleStatus",
   updatedAt: new Date(),
   visibleAtNight: "true",
 };
 const FIND_MANY_RESULT = [
   {
     bookingFee: "exampleBookingFee",
+    bookingStage: "exampleBookingStage",
     country: "exampleCountry",
     county: "exampleCounty",
     createdAt: new Date(),
@@ -85,6 +92,7 @@ const FIND_MANY_RESULT = [
     facingRoad: "true",
     farthestVisibility: "exampleFarthestVisibility",
     id: "exampleId",
+    isOccupied: "true",
     landmark: "exampleLandmark",
     location: "exampleLocation",
     maintenanceCharge: "exampleMaintenanceCharge",
@@ -99,12 +107,14 @@ const FIND_MANY_RESULT = [
     spaceRestrictions: "exampleSpaceRestrictions",
     spaceTitle: "exampleSpaceTitle",
     spaceType: "exampleSpaceType",
+    status: "exampleStatus",
     updatedAt: new Date(),
     visibleAtNight: "true",
   },
 ];
 const FIND_ONE_RESULT = {
   bookingFee: "exampleBookingFee",
+  bookingStage: "exampleBookingStage",
   country: "exampleCountry",
   county: "exampleCounty",
   createdAt: new Date(),
@@ -114,6 +124,7 @@ const FIND_ONE_RESULT = {
   facingRoad: "true",
   farthestVisibility: "exampleFarthestVisibility",
   id: "exampleId",
+  isOccupied: "true",
   landmark: "exampleLandmark",
   location: "exampleLocation",
   maintenanceCharge: "exampleMaintenanceCharge",
@@ -128,6 +139,7 @@ const FIND_ONE_RESULT = {
   spaceRestrictions: "exampleSpaceRestrictions",
   spaceTitle: "exampleSpaceTitle",
   spaceType: "exampleSpaceType",
+  status: "exampleStatus",
   updatedAt: new Date(),
   visibleAtNight: "true",
 };

@@ -9,6 +9,7 @@ export type SpaceCreateInput = {
   availability?: InputJsonValue;
   bookingFee?: string | null;
   bookings?: BookingCreateNestedManyWithoutSpacesInput;
+  bookingStage?: string | null;
   country?: string | null;
   county?: string | null;
   description?: string | null;
@@ -16,6 +17,7 @@ export type SpaceCreateInput = {
   distanceToGround?: string | null;
   facingRoad?: boolean | null;
   farthestVisibility?: string | null;
+  isOccupied: boolean;
   landmark?: string | null;
   legalDocs?: InputJsonValue;
   location?: string | null;
@@ -34,6 +36,7 @@ export type SpaceCreateInput = {
   spaceRestrictions?: string | null;
   spaceTitle?: string | null;
   spaceType?: string | null;
+  status: string;
   user?: UserWhereUniqueInput | null;
   visibleAtNight?: boolean | null;
 };

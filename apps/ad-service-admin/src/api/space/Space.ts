@@ -9,6 +9,7 @@ export type Space = {
   availability: JsonValue;
   bookingFee: string | null;
   bookings?: Array<Booking>;
+  bookingStage: string | null;
   country: string | null;
   county: string | null;
   createdAt: Date;
@@ -18,6 +19,7 @@ export type Space = {
   facingRoad: boolean | null;
   farthestVisibility: string | null;
   id: string;
+  isOccupied: boolean;
   landmark: string | null;
   legalDocs: JsonValue;
   location: string | null;
@@ -36,6 +38,7 @@ export type Space = {
   spaceRestrictions: string | null;
   spaceTitle: string | null;
   spaceType: string | null;
+  status: string;
   updatedAt: Date;
   user?: User | null;
   visibleAtNight: boolean | null;

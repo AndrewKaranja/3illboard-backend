@@ -19,6 +19,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { BookingListRelationFilter } from "../../booking/base/BookingListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
+import { BooleanFilter } from "../../util/BooleanFilter";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { RatingListRelationFilter } from "../../rating/base/RatingListRelationFilter";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
@@ -70,6 +71,17 @@ class SpaceWhereInput {
     nullable: true,
   })
   bookings?: BookingListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  bookingStage?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -158,6 +170,17 @@ class SpaceWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanFilter,
+  })
+  @Type(() => BooleanFilter)
+  @IsOptional()
+  @Field(() => BooleanFilter, {
+    nullable: true,
+  })
+  isOccupied?: BooleanFilter;
 
   @ApiProperty({
     required: false,
@@ -346,6 +369,17 @@ class SpaceWhereInput {
     nullable: true,
   })
   spaceType?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  status?: StringFilter;
 
   @ApiProperty({
     required: false,
