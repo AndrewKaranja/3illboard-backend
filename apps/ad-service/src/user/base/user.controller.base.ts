@@ -709,6 +709,7 @@ export class UserControllerBase {
       select: {
         availability: true,
         bookingFee: true,
+        bookingStage: true,
         country: true,
         county: true,
         createdAt: true,
@@ -718,6 +719,7 @@ export class UserControllerBase {
         facingRoad: true,
         farthestVisibility: true,
         id: true,
+        isOccupied: true,
         landmark: true,
         legalDocs: true,
         location: true,
@@ -735,6 +737,7 @@ export class UserControllerBase {
         spaceRestrictions: true,
         spaceTitle: true,
         spaceType: true,
+        status: true,
         updatedAt: true,
 
         user: {

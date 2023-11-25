@@ -40,6 +40,7 @@ export const SpaceEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={BookingTitle} />
         </ReferenceArrayInput>
+        <TextInput label="bookingStage" source="bookingStage" />
         <TextInput label="country" source="country" />
         <TextInput label="county" source="county" />
         <TextInput label="description" multiline source="description" />
@@ -47,6 +48,7 @@ export const SpaceEdit = (props: EditProps): React.ReactElement => {
         <TextInput label="distanceToGround" source="distanceToGround" />
         <BooleanInput label="facingRoad" source="facingRoad" />
         <TextInput label="farthestVisibility" source="farthestVisibility" />
+        <BooleanInput label="isOccupied" source="isOccupied" />
         <TextInput label="landmark" source="landmark" />
         <div />
         <TextInput label="location" source="location" />
@@ -72,6 +74,7 @@ export const SpaceEdit = (props: EditProps): React.ReactElement => {
         <TextInput label="spaceRestrictions" source="spaceRestrictions" />
         <TextInput label="spaceTitle" source="spaceTitle" />
         <TextInput label="spaceType" source="spaceType" />
+        <TextInput label="status" source="status" />
         <ReferenceInput source="user.id" reference="User" label="User">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>

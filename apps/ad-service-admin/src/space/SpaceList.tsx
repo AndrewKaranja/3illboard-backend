@@ -25,6 +25,7 @@ export const SpaceList = (props: ListProps): React.ReactElement => {
       <Datagrid rowClick="show">
         <TextField label="availability" source="availability" />
         <TextField label="bookingFee" source="bookingFee" />
+        <TextField label="bookingStage" source="bookingStage" />
         <TextField label="country" source="country" />
         <TextField label="county" source="county" />
         <DateField source="createdAt" label="Created At" />
@@ -34,6 +35,7 @@ export const SpaceList = (props: ListProps): React.ReactElement => {
         <BooleanField label="facingRoad" source="facingRoad" />
         <TextField label="farthestVisibility" source="farthestVisibility" />
         <TextField label="ID" source="id" />
+        <BooleanField label="isOccupied" source="isOccupied" />
         <TextField label="landmark" source="landmark" />
         <TextField label="legalDocs" source="legalDocs" />
         <TextField label="location" source="location" />
@@ -51,6 +53,7 @@ export const SpaceList = (props: ListProps): React.ReactElement => {
         <TextField label="spaceRestrictions" source="spaceRestrictions" />
         <TextField label="spaceTitle" source="spaceTitle" />
         <TextField label="spaceType" source="spaceType" />
+        <TextField label="status" source="status" />
         <DateField source="updatedAt" label="Updated At" />
         <ReferenceField label="User" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />

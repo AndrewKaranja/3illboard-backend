@@ -83,6 +83,17 @@ class SpaceCreateInput {
   @Field(() => String, {
     nullable: true,
   })
+  bookingStage?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   country?: string | null;
 
   @ApiProperty({
@@ -147,6 +158,14 @@ class SpaceCreateInput {
     nullable: true,
   })
   farthestVisibility?: string | null;
+
+  @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @Field(() => Boolean)
+  isOccupied!: boolean;
 
   @ApiProperty({
     required: false,
@@ -340,6 +359,14 @@ class SpaceCreateInput {
     nullable: true,
   })
   spaceType?: string | null;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  status!: string;
 
   @ApiProperty({
     required: false,

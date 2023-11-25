@@ -4,6 +4,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { BookingListRelationFilter } from "../booking/BookingListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
+import { BooleanFilter } from "../../util/BooleanFilter";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { RatingListRelationFilter } from "../rating/RatingListRelationFilter";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
@@ -13,6 +14,7 @@ export type SpaceWhereInput = {
   availability?: JsonFilter;
   bookingFee?: StringNullableFilter;
   bookings?: BookingListRelationFilter;
+  bookingStage?: StringNullableFilter;
   country?: StringNullableFilter;
   county?: StringNullableFilter;
   description?: StringNullableFilter;
@@ -21,6 +23,7 @@ export type SpaceWhereInput = {
   facingRoad?: BooleanNullableFilter;
   farthestVisibility?: StringNullableFilter;
   id?: StringFilter;
+  isOccupied?: BooleanFilter;
   landmark?: StringNullableFilter;
   legalDocs?: JsonFilter;
   location?: StringNullableFilter;
@@ -38,6 +41,7 @@ export type SpaceWhereInput = {
   spaceRestrictions?: StringNullableFilter;
   spaceTitle?: StringNullableFilter;
   spaceType?: StringNullableFilter;
+  status?: StringFilter;
   user?: UserWhereUniqueInput;
   visibleAtNight?: BooleanNullableFilter;
 };

@@ -3,6 +3,7 @@ import { SortOrder } from "../../util/SortOrder";
 export type SpaceOrderByInput = {
   availability?: SortOrder;
   bookingFee?: SortOrder;
+  bookingStage?: SortOrder;
   country?: SortOrder;
   county?: SortOrder;
   createdAt?: SortOrder;
@@ -12,6 +13,7 @@ export type SpaceOrderByInput = {
   facingRoad?: SortOrder;
   farthestVisibility?: SortOrder;
   id?: SortOrder;
+  isOccupied?: SortOrder;
   landmark?: SortOrder;
   legalDocs?: SortOrder;
   location?: SortOrder;
@@ -29,6 +31,7 @@ export type SpaceOrderByInput = {
   spaceRestrictions?: SortOrder;
   spaceTitle?: SortOrder;
   spaceType?: SortOrder;
+  status?: SortOrder;
   updatedAt?: SortOrder;
   userId?: SortOrder;
   visibleAtNight?: SortOrder;
